@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2,500 Acres in the Adirondacks — Karim Nabahi</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="brand"><a href="../index.html" style="color:inherit">Karim <span>Nabahi</span></a></div>
+      <div class="links">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="proj-hero">
+    <div class="container">
+      <span class="eyebrow">Spatial Decision Support System</span>
+      <h1>2,500 Acres in the Adirondacks</h1>
+      <p class="lead">In 2025, New York voters passed a constitutional amendment requiring the
+        state to acquire 2,500 acres of land "equal to or greater in value" to offset land taken
+        from the Forest Preserve. The amendment never defined <em>value</em> — so I built a system
+        that does, and that recommends which parcels to buy under different stakeholder priorities.</p>
+      <div class="meta-row">
+        <div class="item"><div class="k">Role</div><div class="v">Design, modeling, code</div></div>
+        <div class="item"><div class="k">Tools</div><div class="v">ArcGIS Pro, Python (arcpy), Leaflet</div></div>
+        <div class="item"><div class="k">Method</div><div class="v">Multi-criteria evaluation</div></div>
+        <div class="item"><div class="k">Course</div><div class="v">GTECH 732, Hunter College</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section style="padding-top:20px">
+    <div class="container">
+      <div class="prose">
+        <h2>The problem</h2>
+        <p>The amendment retroactively authorized ski and biathlon trails built on 323 acres of
+          protected Adirondack Forest Preserve, and in exchange requires New York to add 2,500 new
+          acres of comparable ecological value. But "value" is subjective: a conservation group, the
+          state land manager, and a taxpayer will each rank candidate parcels differently. The tool
+          makes those priorities explicit and shows how the recommended acquisition changes as they shift.</p>
+      </div>
+
+      <!-- INTERACTIVE MAP -->
+      <div class="explorer">
+        <div class="toolbar">
+          <h3>Explore the recommendations</h3>
+          <p>Pick a stakeholder profile to see which parcels the model recommends. Click any parcel for details.</p>
+        </div>
+        <div class="scenario-btns" id="scenarioBtns"></div>
+        <div class="map-wrap">
+          <div id="map"></div>
+          <aside class="info-panel" id="infoPanel"></aside>
+        </div>
+      </div>
+      <p style="max-width:760px;color:var(--muted);font-size:.9rem">
+        Each result is the highest-ranked parcel — or, when no single parcel fits the target acreage,
+        a contiguous cluster the model grows by absorbing the best-scoring neighbors while keeping the
+        shape compact. All ten profiles run against the same underlying parcel scores; only the weights differ.
+      </p>
+
+      <div class="prose">
+        <h2>How it works</h2>
+        <p>The model runs in two halves. A one-time preprocessing stage scores every 30-metre cell of
+          the Adirondacks on four ecological factors — land cover &amp; slope suitability, riparian
+          proximity, rare-habitat value (EDGE), and protection-gap value — and summarizes each factor
+          onto candidate parcels as a per-acre mean. Then, for a given stakeholder, those factor scores
+          plus parcel size and cost are normalized and combined into a single weighted index; the
+          highest-scoring parcel or grown cluster wins.</p>
+        <p>Keeping the ecological scores as per-acre <em>means</em> (rather than totals) is what lets the
+          six criteria stay independent — a big tract and a small tract of equal habitat quality score the
+          same, and only the explicit size weight rewards bigness.</p>
+        <figure>
+          <img src="../assets/flowchart.png" alt="Process flowchart of the SDSS pipeline">
+          <figcaption>Full pipeline: preprocessing (run once) feeds a fast, per-stakeholder ranking and clustering step.</figcaption>
+        </figure>
+
+        <h2>What the results show</h2>
+        <p>The ten profiles above trace the whole trade-off. A fiscal profile, minimizing cost under a
+          tight budget, settles on a single affordable parcel in Hopkinton; a biodiversity profile assembles
+          a compact, higher-value cluster of rare habitat in Parishville; and the water-weighted profiles
+          shift the recommendation to Long Lake, near the rivers and lakes. Because the model enforces each
+          profile's spending cap as a hard limit and only grows a contiguous cluster when a single parcel is
+          too small, every result stays both affordable and manageable as one connected acquisition.</p>
+
+        <h2>Grounding in the literature</h2>
+        <p>The normalize-then-weight structure follows Li &amp; Nigh (2011); the continuous slope-suitability
+          curve follows Store &amp; Kangas (2001); riparian buffers follow Wenger (1999) and the Adirondack
+          Park Agency shoreline rules; rare-habitat ranks are cardinalized with Rank-Order-Centroid weights
+          (Barron &amp; Barrett 1996); and the compact-cluster growth borrows the boundary-length logic of
+          Marxan (Watts et al. 2009).</p>
+        <p><em>[Add a link to the full paper PDF here once exported.]</em></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <a href="../index.html">&larr; Back to projects</a> &nbsp;&middot;&nbsp;
+      &copy; <span id="yr"></span> Karim Nabahi
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/sdss-map.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

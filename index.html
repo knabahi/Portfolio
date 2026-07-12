@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Karim Nabahi — GIS & Geoinformatics</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="brand">Karim <span>Nabahi</span></div>
+      <div class="links">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="tag">GIS &middot; Geoinformatics &middot; Spatial Analysis</div>
+      <h1>Karim Nabahi</h1>
+      <p>Graduate geoinformatics student building spatial decision-support tools that turn
+         messy geographic data into clear, defensible recommendations.</p>
+      <div class="cta">
+        <a class="btn" href="#projects">View projects</a>
+        <a class="btn secondary" href="#contact">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Selected Work</div>
+        <h2>Projects</h2>
+        <p>Applied spatial analysis, modeling, and cartography.</p>
+      </div>
+      <div class="projects">
+        <a class="card" href="projects/adk-sdss.html" style="color:inherit">
+          <div class="thumb" style="background-image:url('assets/sdss-thumb.png')"></div>
+          <div class="body">
+            <div class="eyebrow">Spatial Decision Support &middot; ArcGIS + Python</div>
+            <h3>2,500 Acres in the Adirondacks</h3>
+            <p>A spatial decision-support system that identifies which private parcels New York
+               should acquire to satisfy a 2025 constitutional amendment — ranking parcels (and
+               growing contiguous clusters) under different stakeholder priorities.</p>
+            <span class="btn" style="padding:9px 18px">Explore the interactive map &rarr;</span>
+            <div class="tags">
+              <span class="tag-chip">ArcGIS Pro</span>
+              <span class="tag-chip">Python / arcpy</span>
+              <span class="tag-chip">Multi-Criteria Analysis</span>
+              <span class="tag-chip">Leaflet</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">About</div>
+        <h2>About me</h2>
+      </div>
+      <div class="prose">
+        <p>I'm a graduate student in Advanced Geoinformatics at Hunter College, focused on
+           spatial modeling, multi-criteria decision analysis, and building GIS tools that are
+           transparent enough to stand up to scrutiny. I work across ArcGIS Pro, Python (arcpy),
+           and web mapping.</p>
+        <p><em>[Placeholder — add a few sentences about your background, interests, and what
+           you're looking for.]</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Contact</div>
+        <h2>Get in touch</h2>
+      </div>
+      <div class="prose">
+        <p>
+          Email: <a href="mailto:karim@nabahi.com">karim@nabahi.com</a><br>
+          <em>[Placeholder — add LinkedIn, GitHub, or other links here.]</em>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      &copy; <span id="yr"></span> Karim Nabahi. Built with plain HTML, CSS, and Leaflet.
+    </div>
+  </footer>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
