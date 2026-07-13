@@ -29,9 +29,19 @@
   });
 
   var map = L.map("map", { scrollWheelZoom: false }).setView([44.0, -74.4], 7);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; OpenStreetMap &copy; CARTO', maxZoom: 19, subdomains: "abcd"
-  }).addTo(map);
+
+  var imagery = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+    attribution: "Imagery &copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community",
+    maxZoom: 19
+  });
+  var light = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+    attribution: "&copy; OpenStreetMap &copy; CARTO", maxZoom: 19, subdomains: "abcd"
+  });
+
+  imagery.addTo(map); // default basemap
+  L.control.layers({ "Imagery": imagery, "Light": light }, null,
+                   { position: "topright", collapsed: false }).addTo(map);
 
   // ADK boundary for context
   L.geoJSON(window.ADK_BOUNDARY, {
@@ -52,7 +62,7 @@
     if (currentLayer) { map.removeLayer(currentLayer); }
     var feats = byScenario[name] || [];
     currentLayer = L.geoJSON({ type: "FeatureCollection", features: feats }, {
-      style: { color: "#234f2e", weight: 1.5, fillColor: "#d9a441", fillOpacity: 0.55 },
+      style: { color: "#ffffff", weight: 2, fillColor: "#d9a441", fillOpacity: 0.6 },
       onEachFeature: function (f, layer) {
         layer.bindPopup(parcelPopup(f.properties));
         layer.on("mouseover", function () { layer.setStyle({ fillOpacity: 0.8 }); });
