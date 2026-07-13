@@ -18,6 +18,10 @@
   };
   var ORDER = ["Same", "Bio", "EDGE", "River", "GapFocus", "WildLand", "Climate", "Fiscal", "Compromise", "EcoEfficient"];
 
+  // Budget cap varies per scenario; acreage target (2,250-2,750) is the same for all.
+  var BUDGET = { Same: "$3M", Bio: "$3M", EDGE: "$3M", River: "$3M", Fiscal: "$1.5M",
+                 WildLand: "$3M", Climate: "$3M", GapFocus: "$3M", Compromise: "$2.5M", EcoEfficient: "$2M" };
+
   var USD = function (n) { return "$" + Math.round(n).toLocaleString(); };
   var NUM = function (n, d) { return Number(n).toLocaleString(undefined, { maximumFractionDigits: d || 0 }); };
 
@@ -81,7 +85,8 @@
       stat("Total acres", NUM(p.Cluster_Acres, 1)) +
       stat("Total price", USD(p.Cluster_Value)) +
       stat("Suitability index", NUM(p.Final_Index, 2)) +
-      '<div class="weights">Weights (Land·Bio·Rip·Gap·Size·Cost): <code>' + m.w + '</code></div>';
+      '<div class="weights">Weights (Land·Bio·Rip·Gap·Size·Cost): <code>' + m.w + '</code></div>' +
+      '<div class="weights">Budget cap <code>' + (BUDGET[name] || "") + '</code> &middot; target <code>2,250–2,750 ac</code> (same for every scenario)</div>';
 
     Array.prototype.forEach.call(document.querySelectorAll(".scenario-btns button"), function (b) {
       b.classList.toggle("active", b.dataset.s === name);
