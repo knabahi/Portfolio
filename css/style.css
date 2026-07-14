@@ -113,6 +113,16 @@ figcaption { color: var(--muted); font-size: .9rem; margin-top: 8px; text-align:
 .weights { margin-top: 14px; font-size: .82rem; color: var(--muted); }
 .weights code { background: var(--green-light); padding: 2px 6px; border-radius: 4px; color: var(--green-dark); }
 
+/* about photo gallery */
+.about-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
+.photo-grid { display: flex; flex-direction: column; gap: 16px; }
+.photo-grid img {
+  width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border); display: block;
+}
+@media (max-width: 860px) {
+  .about-layout { grid-template-columns: 1fr; }
+}
+
 /* resume */
 .resume-entry { margin-bottom: 22px; }
 .resume-entry .row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; }
