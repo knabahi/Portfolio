@@ -1,0 +1,173 @@
+# Theme / Design Tokens
+
+Framework: none (plain static HTML + vanilla CSS, no build step, no Tailwind, no component library).
+Single global stylesheet: `css/style.css` (157 lines, included below in full).
+
+## Full `css/style.css`
+
+```css
+:root {
+  --green: #2f6b3e;
+  --green-dark: #234f2e;
+  --green-light: #e7f0e9;
+  --ink: #1c2321;
+  --muted: #5c6b63;
+  --bg: #fbfaf6;
+  --card: #ffffff;
+  --border: #e2e5df;
+  --accent: #d9a441;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; }
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+/* nav */
+.nav {
+  position: sticky; top: 0; z-index: 500;
+  background: rgba(251,250,246,0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+.nav .container { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+.nav .brand { font-weight: 700; font-size: 1.05rem; letter-spacing: .2px; }
+.nav .brand span { color: var(--green); }
+.nav .links a { margin-left: 22px; color: var(--muted); font-weight: 500; font-size: .95rem; }
+.nav .links a:hover { color: var(--green); text-decoration: none; }
+
+/* hero */
+.hero { padding: 84px 0 64px; }
+.hero-layout { display: grid; grid-template-columns: 1fr minmax(200px, 340px); gap: 40px; align-items: center; }
+.hero h1 { font-size: 2.9rem; line-height: 1.1; margin: 0 0 14px; letter-spacing: -.5px; }
+.hero p { font-size: 1.18rem; color: var(--muted); max-width: 640px; }
+.hero .cta { margin-top: 28px; }
+.hero-photo {
+  height: auto; width: 100%; max-width: 340px; max-height: 340px; object-fit: contain;
+  border-radius: 12px; border: 1px solid var(--border); display: block; justify-self: end;
+}
+@media (max-width: 860px) {
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-photo { justify-self: start; max-width: 220px; max-height: 220px; }
+}
+.btn {
+  display: inline-block; background: var(--green); color: #fff; padding: 12px 22px;
+  border-radius: 8px; font-weight: 600; margin-right: 12px;
+}
+.btn:hover { background: var(--green-dark); text-decoration: none; }
+.btn.secondary { background: transparent; color: var(--green); border: 1.5px solid var(--green); }
+
+/* sections */
+section { padding: 56px 0; }
+.section-head { margin-bottom: 30px; }
+.section-head h2 { font-size: 1.9rem; margin: 0 0 8px; }
+.section-head p { color: var(--muted); margin: 0; }
+.eyebrow { color: var(--green); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: .8rem; }
+
+/* project cards */
+.projects { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  overflow: hidden; display: grid; grid-template-columns: 1.1fr 1fr;
+  transition: box-shadow .2s, transform .2s;
+}
+.card:hover { box-shadow: 0 12px 34px rgba(35,79,46,0.13); transform: translateY(-2px); }
+.card .thumb { background: var(--green-light); min-height: 350px; background-size: cover; background-position: center; }
+.card .body { padding: 30px; }
+.card .body h3 { margin: 6px 0 10px; font-size: 1.45rem; }
+.card .body p { color: var(--muted); margin: 0 0 16px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tag-chip { background: var(--green-light); color: var(--green-dark); font-size: .78rem; font-weight: 600; padding: 4px 11px; border-radius: 20px; }
+
+/* project page */
+.proj-hero { padding: 60px 0 26px; }
+.proj-hero .eyebrow { display: block; margin-bottom: 10px; }
+.proj-hero h1 { font-size: 2.5rem; margin: 0 0 14px; letter-spacing: -.5px; }
+.proj-hero .lead { font-size: 1.2rem; color: var(--muted); max-width: 760px; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border); }
+.meta-row .item .k { font-size: .75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+.meta-row .item .v { font-weight: 600; }
+
+.prose { max-width: 760px; }
+.prose h2 { font-size: 1.6rem; margin: 44px 0 12px; }
+.prose h3 { font-size: 1.15rem; margin: 26px 0 6px; }
+.prose p { color: #33403a; }
+figure { margin: 26px 0; }
+figure img { border: 1px solid var(--border); border-radius: 10px; }
+figcaption { color: var(--muted); font-size: .9rem; margin-top: 8px; text-align: center; }
+
+/* map explorer */
+.explorer { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 30px 0; }
+.explorer .toolbar { padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.explorer .toolbar h3 { margin: 0 0 4px; font-size: 1.1rem; }
+.explorer .toolbar p { margin: 0; color: var(--muted); font-size: .9rem; }
+.scenario-btns { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px 20px 4px; }
+.scenario-btns button {
+  border: 1.5px solid var(--border); background: #fff; color: var(--ink);
+  padding: 7px 13px; border-radius: 20px; font-size: .85rem; font-weight: 600; cursor: pointer;
+  transition: all .15s;
+}
+.scenario-btns button:hover { border-color: var(--green); color: var(--green); }
+.scenario-btns button.active { background: var(--green); border-color: var(--green); color: #fff; }
+.map-wrap { display: grid; grid-template-columns: 1fr 300px; }
+#map { height: 520px; width: 100%; }
+.info-panel { padding: 20px; border-left: 1px solid var(--border); background: #fcfdfb; }
+.info-panel .sc-label { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+.info-panel .sc-desc { color: var(--muted); font-size: .92rem; margin-bottom: 16px; }
+.stat { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed var(--border); font-size: .95rem; }
+.stat .k { color: var(--muted); }
+.stat .v { font-weight: 600; }
+.weights { margin-top: 14px; font-size: .82rem; color: var(--muted); }
+.weights code { background: var(--green-light); padding: 2px 6px; border-radius: 4px; color: var(--green-dark); }
+
+/* about photo gallery */
+.about-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
+.photo-grid { display: flex; flex-direction: column; gap: 16px; }
+.photo-grid img {
+  width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border); display: block;
+}
+@media (max-width: 860px) {
+  .about-layout { grid-template-columns: 1fr; }
+}
+
+/* resume */
+.resume-entry { margin-bottom: 22px; }
+.resume-entry .row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; }
+.resume-entry .org { font-weight: 700; }
+.resume-entry .loc, .resume-entry .dates { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+.resume-entry .role { font-style: italic; margin-top: 2px; }
+.resume-entry ul { margin: 8px 0 0; padding-left: 1.2em; color: #33403a; }
+.resume-entry ul li { margin-bottom: 4px; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 8px; }
+.skills-grid h4 { margin: 0 0 8px; font-size: .95rem; }
+
+/* footer */
+footer { border-top: 1px solid var(--border); padding: 40px 0; color: var(--muted); font-size: .9rem; }
+footer a { color: var(--muted); }
+
+@media (max-width: 860px) {
+  .card { grid-template-columns: 1fr; }
+  .card .thumb { min-height: 220px; }
+  .map-wrap { grid-template-columns: 1fr; }
+  .info-panel { border-left: none; border-top: 1px solid var(--border); }
+  .hero h1 { font-size: 2.2rem; }
+  #map { height: 420px; }
+}
+```
+
+## Token summary
+- Colors: green `#2f6b3e` (primary/brand), green-dark `#234f2e` (hover), green-light `#e7f0e9` (tints/chips/thumb bg), ink `#1c2321` (body text), muted `#5c6b63` (secondary text), bg `#fbfaf6` (page background, warm off-white), card `#ffffff`, border `#e2e5df`, accent `#d9a441` (gold, used only in map/data-viz, not UI chrome).
+- Fonts: system font stack only (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`). No serif, no webfonts, no monospace anywhere.
+- Radius: 8-16px range (buttons 8px, cards 14px, photos/panels 10-12px, tag chips fully round 20px).
+- Shadows: only one, on `.card:hover` (`0 12px 34px rgba(35,79,46,0.13)`) — otherwise flat, border-based (1px solid var(--border)) rather than shadow-based separation.
+- Spacing: sections `padding: 56px 0`, container `max-width: 1060px`, generous gaps (24-40px) between grid items.
+- Breakpoint: single breakpoint at `860px` for mobile stacking.
