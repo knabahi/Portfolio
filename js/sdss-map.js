@@ -11,16 +11,15 @@
     River:        { label: "Riparian",            desc: "Prioritizes proximity to rivers and lakes.",                     w: "1·1·3·1·1·1" },
     Fiscal:       { label: "Fiscal",              desc: "Minimizes cost under a tight $1.5M budget.",                     w: "1·1·1·1·1·3" },
     WildLand:     { label: "Wild Forest",         desc: "Prioritizes forested land suitability.",                        w: "3·1·1·1·1·1" },
-    Climate:      { label: "Climate Resilience",  desc: "Emphasizes forest land and riparian connectivity.",             w: "3·1·3·1·1·1" },
     GapFocus:     { label: "Protection Gaps",     desc: "Prioritizes under-protected habitat (gap analysis).",           w: "1·1·1·3·1·1" },
     Compromise:   { label: "Compromise",          desc: "Balanced ecology, kept cost-aware.",                            w: "2·2·2·2·1·3" },
     EcoEfficient: { label: "Eco-Efficient",       desc: "Best ecology per dollar: high habitat value, cost-conscious.",  w: "3·3·3·3·1·4" }
   };
-  var ORDER = ["Same", "Bio", "EDGE", "River", "GapFocus", "WildLand", "Climate", "Fiscal", "Compromise", "EcoEfficient"];
+  var ORDER = ["Same", "Bio", "EDGE", "River", "GapFocus", "WildLand", "Fiscal", "Compromise", "EcoEfficient"];
 
   // Budget cap varies per scenario; acreage target (2,250-2,750) is the same for all.
   var BUDGET = { Same: "$3M", Bio: "$3M", EDGE: "$3M", River: "$3M", Fiscal: "$1.5M",
-                 WildLand: "$3M", Climate: "$3M", GapFocus: "$3M", Compromise: "$2.5M", EcoEfficient: "$2M" };
+                 WildLand: "$3M", GapFocus: "$3M", Compromise: "$2.5M", EcoEfficient: "$2M" };
 
   var USD = function (n) { return "$" + Math.round(n).toLocaleString(); };
   var NUM = function (n, d) { return Number(n).toLocaleString(undefined, { maximumFractionDigits: d || 0 }); };
