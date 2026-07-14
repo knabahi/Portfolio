@@ -4,22 +4,20 @@
   "use strict";
 
   // Stakeholder profile metadata. Weight order: Land · Bio · Riparian · Gap · Size · Cost.
+  // NOTE: the original 9 stakeholder weight profiles only produced 4 distinct
+  // outcomes — several different weightings independently converged on the same
+  // parcel/cluster. Consolidated to one button per distinct result, with the
+  // description naming which weight profiles land there.
   var META = {
-    Same:         { label: "Baseline (Equal)",   desc: "All six criteria weighted equally — a neutral starting point.", w: "1·1·1·1·1·1" },
-    Bio:          { label: "Biodiversity",        desc: "Heavy weight on every ecological factor.",                       w: "3·3·3·3·1·1" },
-    EDGE:         { label: "Rare Habitat (EDGE)", desc: "Prioritizes rare, high-quality habitat and protection gaps.",    w: "1·3·1·3·1·1" },
-    River:        { label: "Riparian",            desc: "Prioritizes proximity to rivers and lakes.",                     w: "1·1·3·1·1·1" },
-    Fiscal:       { label: "Fiscal",              desc: "Minimizes cost under a tight $1.5M budget.",                     w: "1·1·1·1·1·3" },
-    WildLand:     { label: "Wild Forest",         desc: "Prioritizes forested land suitability.",                        w: "3·1·1·1·1·1" },
-    GapFocus:     { label: "Protection Gaps",     desc: "Prioritizes under-protected habitat (gap analysis).",           w: "1·1·1·3·1·1" },
-    Compromise:   { label: "Compromise",          desc: "Balanced ecology, kept cost-aware.",                            w: "2·2·2·2·1·3" },
-    EcoEfficient: { label: "Eco-Efficient",       desc: "Best ecology per dollar: high habitat value, cost-conscious.",  w: "3·3·3·3·1·4" }
+    Same:     { label: "Balanced",         desc: "Equal weights across all criteria — same outcome as prioritizing protection gaps alone.", w: "1·1·1·1·1·1" },
+    Bio:      { label: "Ecology-Focused",  desc: "Any strongly ecology-weighted profile (biodiversity, rare habitat, cost-conscious efficiency) converges here.", w: "3·3·3·3·1·1" },
+    WildLand: { label: "Forest & Water",   desc: "Wins under both riparian-focused and wild-forest-focused weighting.", w: "3·1·1·1·1·1" },
+    Fiscal:   { label: "Lowest Cost",      desc: "Minimizes cost under a tight $1.5M budget — the one profile with a genuinely different outcome driven by budget alone.", w: "1·1·1·1·1·3" }
   };
-  var ORDER = ["Same", "Bio", "EDGE", "River", "GapFocus", "WildLand", "Fiscal", "Compromise", "EcoEfficient"];
+  var ORDER = ["Same", "Bio", "WildLand", "Fiscal"];
 
   // Budget cap varies per scenario; acreage target (2,250-2,750) is the same for all.
-  var BUDGET = { Same: "$3M", Bio: "$3M", EDGE: "$3M", River: "$3M", Fiscal: "$1.5M",
-                 WildLand: "$3M", GapFocus: "$3M", Compromise: "$2.5M", EcoEfficient: "$2M" };
+  var BUDGET = { Same: "$3M", Bio: "$3M", WildLand: "$3M", Fiscal: "$1.5M" };
 
   var USD = function (n) { return "$" + Math.round(n).toLocaleString(); };
   var NUM = function (n, d) { return Number(n).toLocaleString(undefined, { maximumFractionDigits: d || 0 }); };
