@@ -39,10 +39,18 @@ img { max-width: 100%; }
 
 /* hero */
 .hero { padding: 84px 0 64px; }
+.hero-layout { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
 .hero h1 { font-size: 2.9rem; line-height: 1.1; margin: 0 0 14px; letter-spacing: -.5px; }
-.hero .tag { color: var(--green); font-weight: 600; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 18px; }
 .hero p { font-size: 1.18rem; color: var(--muted); max-width: 640px; }
 .hero .cta { margin-top: 28px; }
+.hero-photo {
+  height: 380px; width: auto; max-width: 100%; object-fit: contain;
+  border-radius: 12px; border: 1px solid var(--border); display: block; justify-self: end;
+}
+@media (max-width: 860px) {
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-photo { justify-self: start; height: 320px; }
+}
 .btn {
   display: inline-block; background: var(--green); color: #fff; padding: 12px 22px;
   border-radius: 8px; font-weight: 600; margin-right: 12px;
