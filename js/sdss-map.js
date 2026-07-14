@@ -1,5 +1,5 @@
 /* ADK SDSS scenario explorer — client-side Leaflet map.
-   Reads window.SCENARIOS and window.ADK_BOUNDARY from data.js. */
+   Reads window.SCENARIOS, window.ADK_BOUNDARY, and window.DEC_LANDS from data.js. */
 (function () {
   "use strict";
 
@@ -43,14 +43,32 @@
   });
 
   imagery.addTo(map); // default basemap
-  L.control.layers({ "Imagery": imagery, "Light": light }, null,
-                   { position: "topright", collapsed: false }).addTo(map);
 
   // ADK boundary for context
   L.geoJSON(window.ADK_BOUNDARY, {
     style: { color: "#2f6b3e", weight: 1.5, fillColor: "#2f6b3e", fillOpacity: 0.05, dashArray: "4 4" },
     interactive: false
   }).addTo(map);
+
+  // Existing NYS DEC-owned land, undissolved (individual units) so you can see exactly
+  // which DEC parcel a candidate borders. Off by default — it's a lot of polygons and
+  // competes visually with the highlighted results if left on.
+  var decLands = L.geoJSON(window.DEC_LANDS, {
+    style: { color: "#1b5e3a", weight: 1, fillColor: "#4f9d6e", fillOpacity: 0.35 },
+    onEachFeature: function (f, layer) {
+      var p = f.properties;
+      layer.bindPopup(
+        "<strong>" + (p.FACILITY || p.UMP || "DEC Land") + "</strong><br>" +
+        (p.UMP ? p.UMP + "<br>" : "") +
+        (p.CATEGORY || p.CLASS || "") + "<br>" +
+        "<span style='color:#5c6b63'>" + (p.COUNTY || "") +
+        (p.ACRES ? " Co. &middot; " + NUM(p.ACRES, 1) + " acres" : " Co.") + "</span>"
+      );
+    }
+  });
+
+  L.control.layers({ "Imagery": imagery, "Light": light }, { "DEC Lands": decLands },
+                   { position: "topright", collapsed: false }).addTo(map);
 
   var currentLayer = null;
 
