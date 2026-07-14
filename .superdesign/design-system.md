@@ -40,5 +40,33 @@ The user marked up the reference site directly:
 - **Header banner = photo-into-solid-color masthead**: replace a plain solid-color top bar with a two-part banner — one half a photo (fading/blending into the other half), the other half solid oxblood/maroon with the name overlaid on it, like a vintage travel-site masthead. Not just a flat color bar with text.
 - **Top bar + left sidebar together = "the menu bars"**: confirmed to keep both, no change needed there.
 
+## FULL JANK DIRECTION (explicit pivot — user said "go full GeoCities")
+
+The user reviewed more reference sites and asked to go ALL IN on early-2000s amateur-web jank, explicitly saying this can override the "must look like a polished job-search portfolio" concern from earlier — jank IS the desired look now, not a light accent.
+
+Concrete elements observed across the new references, all fair game to combine:
+- **crosscountryroadtrip.com**: thick mismatched colored picture-frame borders around every photo/box (royal blue, orange, red) sitting on a peach/tan page background; a cartoon clip-art GIF-style icon (backpacker by a campfire); every content block has a DIFFERENT flat background color (black, brown, green) with no unified palette; a bright yellow highlight box with classic blue underlined hyperlink text; mixed bold red Arial-ish headings + serif body in places; deliberately inconsistent, scrapbook-like, not systematized.
+- **mandow.ca**: a circular clip-art emblem/logo (dreamcatcher + antlers style illustration); photos with a soft oval-vignette faded-edge frame treatment (distinct from the hard rectangular frames above — use as an alternate photo treatment); small triangular "play-button" style bullet icons for list items; casual colored italic subheadings (green, teal); thin plain horizontal rule dividers; classic blue underlined links.
+- **rupertriver.com**: (already fairly polished, less jank) a real photo banner with cursive script text overlaid, dark-brown top nav bar + dark-brown left sidebar with white text links — useful mainly as a MORE POLISHED anchor point if jank needs any grounding, but the direction now is to lean toward crosscountryroadtrip + mandow's chaos over this one's restraint.
+- **amasci.com**: plain black-serif heading + dense blue-underlined-link list on white — mostly useful for "don't be afraid of a plain dense link list," not a strong visual signal otherwise.
+
+**How to combine for the site**: thick mismatched colored borders around photo placeholders and boxed panels, at least one retro clip-art-style icon (SVG/icon substitute is fine since real GIFs aren't reproducible), a per-section clashing background color instead of one unified palette, classic underlined blue-link styling for at least some links (instead of the earlier serif-underline treatment), and a yellow highlight box treatment for at least one callout (e.g. the resume/contact CTA). Keep content/copy/section order identical regardless of how janky the visual treatment gets.
+
+This FULL JANK direction should be generated as a separate branch draft alongside the existing polished "Framed Vintage Masthead" draft, not replacing it — the user wants to compare both.
+
+## GROUND TRUTH extracted from real page source (not visual approximation)
+
+Per user request, pulled actual HTML/CSS instead of just screenshots:
+
+- **vegasclimb.com/chronological.htm**: has ZERO custom `font-family` anywhere in its `<style>` block. The serif look is purely the browser's default serif (Times New Roman on Windows/Chrome) rendered via legacy `<font size="6">` tags — not Georgia, not a webfont. "Use Kevin's font" = set the whole site to plain `Times New Roman, Times, serif` with no other font-family, exactly like this. Body text color `#5C5858`, page bg `#D7D7D7`, links `#000000` bold (not blue) with hover `#747170`.
+- **crosscountryroadtrip.com**: literally built with Homestead SiteBuilder — absolute-positioned `<div>`s pixel-pinned to a fixed canvas, `<table>` cells with solid-color GIF rectangles for "boxes", and even a scrolling `<marquee>` tag (Verdana 28pt red, "Hostelling across North America"). **Do NOT copy this architecture** — it's non-responsive and marquee is obsolete/unsupported; it would actively break a modern site. DO reuse its real color palette as a jank-authentic swatch bank: peach bg `#ffcc99`, green block `#339966`, pink block `#FF99CC`, yellow block `#FFFF00`, black block `#000000`, red block `#FF0033`, cream block `#FFFFCC`, brown block `#996600`, light-green `#99FF99`, light-blue `#99C2FF`, blue `#0066FF`, dark-blue `#003C96`. Any of these are fair game for section backgrounds or border colors instead of invented ones.
+- **routebaiejames.com**: real external stylesheet, Verdana 10pt body, ink `#3E433F`, sage-green highlight `#C4D89D`, link brown `#7B5B20` (not blue), secondary dusty-red box `#D09D9C`.
+
+Use these real extracted values as hard constraints going forward instead of approximated colors/fonts.
+
+## MARGIN TEXTURE (topographic contour lines)
+
+The outer page-background margin (the peach/cream area around the framed layout) should carry a subtle background texture: light, sandy-tan topographic contour lines (like a USGS/hillshade map), NOT plain boring straight lines — irregular, organic contour-line shapes, at low contrast against the peach background (barely visible, decorative not distracting), with a few small elevation number labels (e.g. "2,340 ft", "1,180 ft") placed along some of the lines, in a tiny muted serif label. This should read as a tasteful nod to GIS/topo maps, sitting only in the margin space outside the main framed content box, not overlapping the boxed content itself. Implement as an inline SVG background pattern (contour-like wavy closed paths at varying low opacity) rather than an external image.
+
 ## Current baseline (for the pixel-perfect reproduction draft only)
 See `.superdesign/init/theme.md` for the full current `css/style.css`. Summary: green `#2f6b3e` primary / `#e7f0e9` tint, off-white bg `#fbfaf6`, system sans-serif font stack only, 8-20px radii, one soft shadow on card hover, sticky blurred nav, solid-fill pill buttons and tag-chips.
