@@ -9,15 +9,16 @@
   // parcel/cluster. Consolidated to one button per distinct result, with the
   // description naming which weight profiles land there.
   var META = {
-    Same:     { label: "Balanced",         desc: "Equal weights across all criteria — same outcome as prioritizing protection gaps alone.", w: "1·1·1·1·1·1" },
-    Bio:      { label: "Ecology-Focused",  desc: "Any strongly ecology-weighted profile (biodiversity, rare habitat, cost-conscious efficiency) converges here.", w: "3·3·3·3·1·1" },
-    WildLand: { label: "Forest & Water",   desc: "Wins under both riparian-focused and wild-forest-focused weighting.", w: "3·1·1·1·1·1" },
-    Fiscal:   { label: "Lowest Cost",      desc: "Minimizes cost under a tight $1.5M budget — the one profile with a genuinely different outcome driven by budget alone.", w: "1·1·1·1·1·3" }
+    Same:      { label: "Balanced",          desc: "Equal weights across all criteria — same outcome as prioritizing protection gaps alone.", w: "1·1·1·1·1·1" },
+    Bio:       { label: "Ecology-Focused",   desc: "Any strongly ecology-weighted profile (biodiversity, rare habitat, cost-conscious efficiency) converges here.", w: "3·3·3·3·1·1" },
+    WildLand:  { label: "Forest & Water",    desc: "Wins under both riparian-focused and wild-forest-focused weighting.", w: "3·1·1·1·1·1" },
+    Fiscal:    { label: "Lowest Cost",       desc: "Minimizes cost under a tight $1.5M budget — the one profile with a genuinely different outcome driven by budget alone.", w: "1·1·1·1·1·3" },
+    SizeFocus: { label: "Maximize Acreage",  desc: "Prioritizes total acreage over ecological quality — grows a larger, lower-scoring cluster instead of a smaller, higher-quality one.", w: "1·1·1·1·4·1" }
   };
-  var ORDER = ["Same", "Bio", "WildLand", "Fiscal"];
+  var ORDER = ["Same", "Bio", "WildLand", "Fiscal", "SizeFocus"];
 
   // Budget cap varies per scenario; acreage target (2,250-2,750) is the same for all.
-  var BUDGET = { Same: "$3M", Bio: "$3M", WildLand: "$3M", Fiscal: "$1.5M" };
+  var BUDGET = { Same: "$3M", Bio: "$3M", WildLand: "$3M", Fiscal: "$1.5M", SizeFocus: "$3M" };
 
   var USD = function (n) { return "$" + Math.round(n).toLocaleString(); };
   var NUM = function (n, d) { return Number(n).toLocaleString(undefined, { maximumFractionDigits: d || 0 }); };
