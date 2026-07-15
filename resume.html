@@ -1,198 +1,264 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Resume — Karim Nabahi</title>
-  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'classic-blue': '#0000EE',
+            'jank-peach': '#f2ead9',
+            'jank-oxblood': '#6b3a2e',
+            'jank-olive': '#7c8b5e',
+            'jank-yellow': '#ffff00'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f2ead9;
+      background-image: url("assets/adk_contours.svg");
+      background-size: 700px 700px;
+      background-repeat: repeat;
+      margin: 0;
+      padding: 40px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    .jank-container { max-width: 1200px; margin: 0 auto; border: 4px solid #3b2f26; background: #fff; display: grid; grid-template-columns: 200px 1fr; }
+    .sidebar { background: #3b2f26; color: white; padding: 20px; border-right: 4px solid #3b2f26; }
+    .sidebar a { color: #fff; text-decoration: underline; display: block; margin-bottom: 15px; font-size: 1.1rem; }
+    .sidebar a:hover { color: #ffff00; }
+    .top-bar { grid-column: 1 / -1; background: #6b3a2e; color: white; padding: 15px 30px; border-bottom: 4px solid #3b2f26; display: flex; align-items: center; gap: 20px; }
+    .top-bar h1 { font-weight: bold; font-size: 3.5rem; margin: 0; letter-spacing: 2px; }
+    .jank-section { padding: 40px; border-bottom: 4px solid #3b2f26; }
+    .thick-border-orange { border: 8px solid #FFA500; }
+    a.classic-link { color: #0000EE; text-decoration: underline; }
+    a.classic-link:hover { color: #FF0000; }
+    .yellow-callout { background: #ffff00; border: 3px dashed #000; padding: 15px; display: inline-block; }
+    .resume-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; }
+    .resume-entry { margin-bottom: 26px; }
+    .resume-entry ul { margin: 8px 0 0; padding-left: 1.2em; }
+    .resume-entry li { margin-bottom: 6px; }
+  </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container">
-      <div class="brand"><a href="index.html" style="color:inherit">Karim <span>Nabahi</span></a></div>
-      <div class="links">
-        <a href="index.html#projects">Projects</a>
-        <a href="index.html#about">About</a>
-        <a href="resume.html">Resume</a>
-        <a href="index.html#contact">Contact</a>
+  <div class="jank-container">
+    <header class="top-bar">
+      <iconify-icon icon="mdi:compass-outline" class="text-5xl text-jank-yellow"></iconify-icon>
+      <h1>KARIM NABAHI</h1>
+    </header>
+    <aside class="sidebar">
+      <nav class="flex flex-col">
+        <a href="index.html#projects">PROJECTS</a>
+        <a href="index.html#about">ABOUT ME</a>
+        <a href="resume.html">MY RESUME</a>
+        <a href="index.html#contact">CONTACT</a>
+      </nav>
+      <div class="mt-10">
+        <iconify-icon icon="mdi:file-document-outline" class="text-4xl text-white/50"></iconify-icon>
+        <p class="text-xs mt-2 font-mono">MY RESUME PAGE!</p>
       </div>
-    </div>
-  </nav>
+    </aside>
+    <main class="bg-white">
 
-  <header class="proj-hero">
-    <div class="container">
-      <span class="eyebrow">Resume</span>
-      <h1>Karim Nabahi</h1>
-      <p class="lead">GIS analyst with field experience applying geospatial tools to watershed
-        management, invasive species monitoring, and land restoration across federal, state, and
-        municipal contexts. Skilled at translating ground-level observations into mapped,
-        actionable data for agency and community stakeholders.</p>
-      <div class="cta">
-        <a class="btn" href="assets/Resume_Karim.pdf" target="_blank" rel="noopener">Download PDF</a>
-        <a class="btn secondary" href="index.html#contact">Get in touch</a>
-      </div>
-    </div>
-  </header>
-
-  <section style="padding-top:10px">
-    <div class="container">
-      <div class="prose">
-
-        <h2>Education</h2>
-        <div class="resume-entry">
-          <div class="row">
-            <span class="org">CUNY Hunter College</span>
-            <span class="loc">New York City, NY</span>
+      <section class="jank-section bg-[#1c2321] text-white">
+        <h2 class="font-bold text-6xl mb-4 text-jank-yellow">RESUME</h2>
+        <p class="text-xl leading-relaxed max-w-3xl">GIS analyst with field experience applying geospatial tools to watershed management, invasive species monitoring, and land restoration across federal, state, and municipal contexts. Skilled at translating ground-level observations into mapped, actionable data for agency and community stakeholders.</p>
+        <div class="flex flex-wrap gap-6 mt-6 items-center">
+          <div class="yellow-callout">
+            <a href="assets/Resume_Karim.pdf" target="_blank" rel="noopener" class="classic-link font-bold text-lg">CLICK HERE TO DOWNLOAD PDF!</a>
           </div>
-          <div class="row">
-            <span class="role">M.S. Geoinformatics</span>
-            <span class="dates">2025 &ndash; Present</span>
-          </div>
+          <a href="index.html#contact" class="classic-link font-bold text-lg">Get in touch &gt;&gt;</a>
         </div>
-        <div class="resume-entry">
-          <div class="row">
-            <span class="org">Bishop's University</span>
-            <span class="loc">Sherbrooke, QC, Canada</span>
-          </div>
-          <div class="row">
-            <span class="role">B.Sc. Computer Science, Minor in Business Administration</span>
-            <span class="dates">2019 &ndash; 2024</span>
-          </div>
-          <ul>
-            <li>Teacher's Assistant, Computer Organization and Logic Design: mentored students and facilitated lab troubleshooting sessions.</li>
-          </ul>
+      </section>
+
+      <section class="jank-section bg-[#3b2f26] text-white">
+        <div class="mb-8 flex items-center gap-4">
+          <iconify-icon icon="mdi:school-outline" class="text-4xl text-orange-400"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">EDUCATION</h2>
         </div>
 
-        <h2>Experience</h2>
-        <div class="resume-entry">
-          <div class="row">
-            <span class="org">Vermont Youth Conservation Corps</span>
-            <span class="loc">Richmond, VT</span>
-          </div>
-          <div class="row">
-            <span class="role">Conservation Crew Leader</span>
-            <span class="dates">May &ndash; October 2025</span>
-          </div>
-          <div class="row">
-            <span class="role">Conservation Crew Member</span>
-            <span class="dates">June &ndash; August 2024</span>
-          </div>
-          <ul>
-            <li>Managed cross-agency coordination between VYCC and project sponsors (VT Dept. of Forest, Parks &amp; Recreation; Dept. of Environmental Conservation) across concurrent multi-site projects.</li>
-            <li>Supervised and mentored a crew of 6&ndash;8, delivering skills training and structured feedback to build capacity and develop future team leaders.</li>
-            <li>Led watershed protection, trail, and carpentry projects: built check dams and retaining gardens to reduce lake runoff, and delivered a fully accessible remote campsite at a State Park.</li>
-            <li>Used ArcGIS Field Maps to track invasive species removal progress and map water chestnut spread on Lake Champlain in partnership with the Dept. of Environmental Conservation.</li>
-            <li>Built rock check steps and an armored trail crossing on the Appalachian Trail with the Green Mountain Club; developed leadership through a rotating Crew Leader of the Day role.</li>
-          </ul>
-        </div>
-
-        <div class="resume-entry">
-          <div class="row">
-            <span class="org">City Parks Foundation</span>
-            <span class="loc">New York, NY</span>
-          </div>
-          <div class="row">
-            <span class="role">Outdoor Educator Intern</span>
-            <span class="dates">April &ndash; May 2025</span>
-          </div>
-          <ul>
-            <li>Designed and led environmental education programming for K&ndash;8 students on local habitats, species life cycles, and watershed conservation.</li>
-            <li>Facilitated field water-testing experiments, introducing students to scientific methodology and environmental monitoring.</li>
-          </ul>
-        </div>
-
-        <div class="resume-entry">
-          <div class="row">
-            <span class="org">Southwest Conservation Corps</span>
-            <span class="loc">Durango, CO &amp; Sarasota, FL</span>
-          </div>
-          <div class="row">
-            <span class="role">Conservation and Disaster Response Member</span>
-            <span class="dates">September &ndash; November 2024</span>
-          </div>
-          <ul>
-            <li>Conducted site assessments for Beaver Dam Analogues on the Mancos River at Mesa Verde NP to model groundwater retention and erosion reduction strategies.</li>
-            <li>Delivered fuels management, accessible infrastructure, and visitor facilities at Canyon of the Ancients NM with BLM and the Ancestral Lands Conservation Corps.</li>
-            <li>Coordinated route planning and managed a high school crew to construct a new accessible biking trail with the Ridgway Area Trails Association.</li>
-            <li>Deployed with AmeriCorps Disaster Response in Sarasota and Tampa, FL: muck-out, roof tarping, damage assessment, and wellness visits to at-risk communities.</li>
-          </ul>
-        </div>
-
-        <div class="resume-entry">
-          <div class="row">
-            <span class="org">Almod Diamonds Ltd</span>
-            <span class="loc">New York, NY</span>
-          </div>
-          <div class="row">
-            <span class="role">Help Desk Intern</span>
-            <span class="dates">January &ndash; March 2019</span>
-          </div>
-          <ul>
-            <li>Standardized office IT infrastructure by building and deploying a Windows 10 workstation image; documented process for future deployments.</li>
-            <li>Redesigned the ticketing system to improve problem reporting accuracy and accessibility for non-technical staff.</li>
-          </ul>
-        </div>
-
-        <div class="resume-entry">
-          <div class="row">
-            <span class="org">Openface Internet Inc.</span>
-            <span class="loc">Montreal, QC</span>
-          </div>
-          <div class="row">
-            <span class="role">Service Delivery Intern</span>
-            <span class="dates">July &ndash; August 2019</span>
-          </div>
-          <ul>
-            <li>Coordinated with ISPs to align customer project timelines; audited contracts database and created communication templates to streamline team workflows.</li>
-          </ul>
-        </div>
-
-        <h2>Skills &amp; Certifications</h2>
-        <div class="skills-grid">
-          <div>
-            <h4>GIS &amp; Technical</h4>
-            <div class="tags">
-              <span class="tag-chip">ArcGIS Pro</span>
-              <span class="tag-chip">ArcGIS Field Maps</span>
-              <span class="tag-chip">ArcPy</span>
-              <span class="tag-chip">IPSS</span>
-              <span class="tag-chip">Python</span>
-              <span class="tag-chip">C</span>
-              <span class="tag-chip">C++</span>
-              <span class="tag-chip">Java</span>
-              <span class="tag-chip">SQL</span>
-              <span class="tag-chip">Windows</span>
-              <span class="tag-chip">Linux</span>
+        <div class="thick-border-orange bg-white text-black p-6 mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">CUNY Hunter College</span>
+              <span class="text-sm">New York City, NY</span>
             </div>
-          </div>
-          <div>
-            <h4>Certifications</h4>
-            <div class="tags">
-              <span class="tag-chip">Wilderness First Aid</span>
-              <span class="tag-chip">CPR</span>
-            </div>
-          </div>
-          <div>
-            <h4>Other</h4>
-            <div class="tags">
-              <span class="tag-chip">Fluent in French</span>
-              <span class="tag-chip">Stakeholder Coordination</span>
-              <span class="tag-chip">Technical Documentation</span>
-              <span class="tag-chip">Crew Leadership</span>
-              <span class="tag-chip">Environmental Education</span>
-              <span class="tag-chip">Logistics Planning</span>
+            <div class="resume-row">
+              <span class="italic">M.S. Geoinformatics</span>
+              <span class="text-sm">2025 &ndash; Present</span>
             </div>
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
+        <div class="thick-border-orange bg-white text-black p-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Bishop's University</span>
+              <span class="text-sm">Sherbrooke, QC, Canada</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">B.Sc. Computer Science, Minor in Business Administration</span>
+              <span class="text-sm">2019 &ndash; 2024</span>
+            </div>
+            <ul>
+              <li>Teacher's Assistant, Computer Organization and Logic Design: mentored students and facilitated lab troubleshooting sessions.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-  <footer>
-    <div class="container">
-      &copy; <span id="yr"></span> Karim Nabahi. Built with plain HTML, CSS, and Leaflet.
-    </div>
+      <section class="jank-section bg-[#7c8b5e] text-white">
+        <div class="mb-8 flex items-center gap-4">
+          <iconify-icon icon="mdi:briefcase-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">EXPERIENCE</h2>
+        </div>
+
+        <div class="thick-border-orange bg-white text-black p-6 mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Vermont Youth Conservation Corps</span>
+              <span class="text-sm">Richmond, VT</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Conservation Crew Leader</span>
+              <span class="text-sm">May &ndash; October 2025</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Conservation Crew Member</span>
+              <span class="text-sm">June &ndash; August 2024</span>
+            </div>
+            <ul>
+              <li>Managed cross-agency coordination between VYCC and project sponsors (VT Dept. of Forest, Parks &amp; Recreation; Dept. of Environmental Conservation) across concurrent multi-site projects.</li>
+              <li>Supervised and mentored a crew of 6&ndash;8, delivering skills training and structured feedback to build capacity and develop future team leaders.</li>
+              <li>Led watershed protection, trail, and carpentry projects: built check dams and retaining gardens to reduce lake runoff, and delivered a fully accessible remote campsite at a State Park.</li>
+              <li>Used ArcGIS Field Maps to track invasive species removal progress and map water chestnut spread on Lake Champlain in partnership with the Dept. of Environmental Conservation.</li>
+              <li>Built rock check steps and an armored trail crossing on the Appalachian Trail with the Green Mountain Club; developed leadership through a rotating Crew Leader of the Day role.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="thick-border-orange bg-white text-black p-6 mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">City Parks Foundation</span>
+              <span class="text-sm">New York, NY</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Outdoor Educator Intern</span>
+              <span class="text-sm">April &ndash; May 2025</span>
+            </div>
+            <ul>
+              <li>Designed and led environmental education programming for K&ndash;8 students on local habitats, species life cycles, and watershed conservation.</li>
+              <li>Facilitated field water-testing experiments, introducing students to scientific methodology and environmental monitoring.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="thick-border-orange bg-white text-black p-6 mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Southwest Conservation Corps</span>
+              <span class="text-sm">Durango, CO &amp; Sarasota, FL</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Conservation and Disaster Response Member</span>
+              <span class="text-sm">September &ndash; November 2024</span>
+            </div>
+            <ul>
+              <li>Conducted site assessments for Beaver Dam Analogues on the Mancos River at Mesa Verde NP to model groundwater retention and erosion reduction strategies.</li>
+              <li>Delivered fuels management, accessible infrastructure, and visitor facilities at Canyon of the Ancients NM with BLM and the Ancestral Lands Conservation Corps.</li>
+              <li>Coordinated route planning and managed a high school crew to construct a new accessible biking trail with the Ridgway Area Trails Association.</li>
+              <li>Deployed with AmeriCorps Disaster Response in Sarasota and Tampa, FL: muck-out, roof tarping, damage assessment, and wellness visits to at-risk communities.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="thick-border-orange bg-white text-black p-6 mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Almod Diamonds Ltd</span>
+              <span class="text-sm">New York, NY</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Help Desk Intern</span>
+              <span class="text-sm">January &ndash; March 2019</span>
+            </div>
+            <ul>
+              <li>Standardized office IT infrastructure by building and deploying a Windows 10 workstation image; documented process for future deployments.</li>
+              <li>Redesigned the ticketing system to improve problem reporting accuracy and accessibility for non-technical staff.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="thick-border-orange bg-white text-black p-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Openface Internet Inc.</span>
+              <span class="text-sm">Montreal, QC</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Service Delivery Intern</span>
+              <span class="text-sm">July &ndash; August 2019</span>
+            </div>
+            <ul>
+              <li>Coordinated with ISPs to align customer project timelines; audited contracts database and created communication templates to streamline team workflows.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="jank-section bg-white text-black">
+        <div class="flex items-center gap-4 mb-8">
+          <iconify-icon icon="mdi:star-outline" class="text-4xl text-blue-600"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">SKILLS &amp; CERTIFICATIONS</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">GIS &amp; Technical</h4>
+            <div class="flex flex-col gap-1">
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> ArcGIS Pro</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> ArcGIS Field Maps</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> ArcPy</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> IPSS</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Python</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> C / C++ / Java</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> SQL</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Windows / Linux</div>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">Certifications</h4>
+            <div class="flex flex-col gap-1">
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Wilderness First Aid</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> CPR</div>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">Other</h4>
+            <div class="flex flex-col gap-1">
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Fluent in French</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Stakeholder Coordination</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Technical Documentation</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Crew Leadership</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Environmental Education</div>
+              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Logistics Planning</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <footer class="text-center py-8 font-mono text-sm uppercase">
+    &copy; <span id="yr"></span> Karim Nabahi &bull; Built with pure HTML/CSS &bull; Best viewed in Netscape Navigator 4.0
   </footer>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>

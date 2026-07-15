@@ -1,111 +1,150 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>2,500 Acres in the Adirondacks — Karim Nabahi</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'classic-blue': '#0000EE',
+            'jank-peach': '#f2ead9',
+            'jank-oxblood': '#6b3a2e',
+            'jank-olive': '#7c8b5e',
+            'jank-yellow': '#ffff00'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f2ead9;
+      background-image: url("../assets/adk_contours.svg");
+      background-size: 700px 700px;
+      background-repeat: repeat;
+      margin: 0;
+      padding: 40px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    .jank-container { max-width: 1200px; margin: 0 auto; border: 4px solid #3b2f26; background: #fff; display: grid; grid-template-columns: 200px 1fr; }
+    .sidebar { background: #3b2f26; color: white; padding: 20px; border-right: 4px solid #3b2f26; }
+    .sidebar a { color: #fff; text-decoration: underline; display: block; margin-bottom: 15px; font-size: 1.1rem; }
+    .sidebar a:hover { color: #ffff00; }
+    .top-bar { grid-column: 1 / -1; background: #6b3a2e; color: white; padding: 15px 30px; border-bottom: 4px solid #3b2f26; display: flex; align-items: center; gap: 20px; }
+    .top-bar h1 { font-weight: bold; font-size: 3.5rem; margin: 0; letter-spacing: 2px; }
+    .jank-section { padding: 40px; border-bottom: 4px solid #3b2f26; }
+    .thick-border-orange { border: 8px solid #FFA500; }
+    a.classic-link { color: #0000EE; text-decoration: underline; }
+    a.classic-link:hover { color: #FF0000; }
+    .yellow-callout { background: #ffff00; border: 3px dashed #000; padding: 15px; display: inline-block; }
+    .meta-stat { border: 2px solid #fff; padding: 10px 16px; }
+    .meta-stat .k { font-size: .7rem; text-transform: uppercase; letter-spacing: 1px; opacity: .7; }
+    .meta-stat .v { font-weight: bold; }
+    /* explorer keeps its own look from ../css/style.css so the map/JS integration is untouched */
+    .explorer { border: 8px solid #0000FF !important; border-radius: 0 !important; }
+  </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container">
-      <div class="brand"><a href="../index.html" style="color:inherit">Karim <span>Nabahi</span></a></div>
-      <div class="links">
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#about">About</a>
-        <a href="../resume.html">Resume</a>
-        <a href="../index.html#contact">Contact</a>
+  <div class="jank-container">
+    <header class="top-bar">
+      <iconify-icon icon="mdi:compass-outline" class="text-5xl text-jank-yellow"></iconify-icon>
+      <h1>KARIM NABAHI</h1>
+    </header>
+    <aside class="sidebar">
+      <nav class="flex flex-col">
+        <a href="../index.html#projects">PROJECTS</a>
+        <a href="../index.html#about">ABOUT ME</a>
+        <a href="../resume.html">MY RESUME</a>
+        <a href="../index.html#contact">CONTACT</a>
+      </nav>
+      <div class="mt-10">
+        <iconify-icon icon="mdi:map-outline" class="text-4xl text-white/50"></iconify-icon>
+        <p class="text-xs mt-2 font-mono">A REAL PROJECT!</p>
       </div>
-    </div>
-  </nav>
+    </aside>
+    <main class="bg-white">
 
-  <header class="proj-hero">
-    <div class="container">
-      <span class="eyebrow">Spatial Decision Support System</span>
-      <h1>2,500 Acres in the Adirondacks</h1>
-      <p class="lead">In 2025, New York voters passed a constitutional amendment requiring the
-        state to acquire 2,500 acres of land "equal to or greater in value" to offset land taken
-        from the Forest Preserve. The amendment never defined <em>value</em> — so I built a system
-        that does, and that recommends which parcels to buy under different stakeholder priorities.</p>
-      <div class="meta-row">
-        <div class="item"><div class="k">Role</div><div class="v">Design, modeling, code</div></div>
-        <div class="item"><div class="k">Tools</div><div class="v">ArcGIS Pro, Python (arcpy), Leaflet</div></div>
-        <div class="item"><div class="k">Method</div><div class="v">Multi-criteria evaluation</div></div>
-        <div class="item"><div class="k">Course</div><div class="v">GTECH 732, Hunter College</div></div>
-      </div>
-    </div>
-  </header>
-
-  <section style="padding-top:20px">
-    <div class="container">
-      <div class="prose">
-        <h2>The problem</h2>
-        <p>The amendment retroactively authorized ski and biathlon trails built on 323 acres of
-          protected Adirondack Forest Preserve, and in exchange requires New York to add 2,500 new
-          acres of comparable ecological value. But "value" is subjective: a conservation group, the
-          state land manager, and a taxpayer will each rank candidate parcels differently. The tool
-          makes those priorities explicit and shows how the recommended acquisition changes as they shift.</p>
-      </div>
-
-      <!-- INTERACTIVE MAP -->
-      <div class="explorer">
-        <div class="toolbar">
-          <h3>Explore the recommendations</h3>
-          <p>Pick a stakeholder profile to see which parcels the model recommends. Click any parcel for details.</p>
+      <section class="jank-section bg-[#1c2321] text-white">
+        <span class="uppercase text-xs tracking-widest text-jank-yellow font-bold">Spatial Decision Support System</span>
+        <h2 class="font-bold text-5xl my-4">2,500 ACRES IN THE ADIRONDACKS</h2>
+        <p class="text-xl leading-relaxed max-w-3xl">In 2025, New York voters passed a constitutional amendment requiring the state to acquire 2,500 acres of land "equal to or greater in value" to offset land taken from the Forest Preserve. The amendment never defined <em>value</em> — so I built a system that does, and that recommends which parcels to buy under different stakeholder priorities.</p>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <div class="meta-stat"><div class="k">Role</div><div class="v">Design, modeling, code</div></div>
+          <div class="meta-stat"><div class="k">Tools</div><div class="v">ArcGIS Pro, Python (arcpy), Leaflet</div></div>
+          <div class="meta-stat"><div class="k">Method</div><div class="v">Multi-criteria evaluation</div></div>
+          <div class="meta-stat"><div class="k">Course</div><div class="v">GTECH 732, Hunter College</div></div>
         </div>
-        <div class="scenario-btns" id="scenarioBtns"></div>
-        <div class="map-wrap">
-          <div id="map"></div>
-          <aside class="info-panel" id="infoPanel"></aside>
+      </section>
+
+      <section class="jank-section bg-[#3b2f26] text-white">
+        <div class="mb-8 flex items-center gap-4">
+          <iconify-icon icon="mdi:map-marker-question-outline" class="text-4xl text-orange-400"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">THE PROBLEM</h2>
         </div>
-      </div>
-      <p style="max-width:760px;color:var(--muted);font-size:.9rem">
-        Each result is the highest-ranked parcel — or, when no single parcel fits the target acreage,
-        a contiguous cluster the model grows by absorbing the best-scoring neighbors while keeping the
-        shape compact. All ten profiles run against the same underlying parcel scores; only the weights differ.
-      </p>
+        <p class="text-lg leading-relaxed max-w-3xl mb-10">The amendment retroactively authorized ski and biathlon trails built on 323 acres of protected Adirondack Forest Preserve, and in exchange requires New York to add 2,500 new acres of comparable ecological value. But "value" is subjective: a conservation group, the state land manager, and a taxpayer will each rank candidate parcels differently. The tool makes those priorities explicit and shows how the recommended acquisition changes as they shift.</p>
 
-      <div class="prose">
-        <h2>How it works</h2>
-        <p>The model runs in two halves. A one-time preprocessing stage scores every 30-metre cell of
-          the Adirondacks on four ecological factors — land cover &amp; slope suitability, riparian
-          proximity, rare-habitat value (EDGE), and protection-gap value — and summarizes each factor
-          onto candidate parcels as a per-acre mean. Then, for a given stakeholder, those factor scores
-          plus parcel size and cost are normalized and combined into a single weighted index; the
-          highest-scoring parcel or grown cluster wins.</p>
-        <p>Keeping the ecological scores as per-acre <em>means</em> (rather than totals) is what lets the
-          six criteria stay independent — a big tract and a small tract of equal habitat quality score the
-          same, and only the explicit size weight rewards bigness.</p>
-        <figure>
-          <img src="../assets/flowchart.png" alt="Process flowchart of the SDSS pipeline">
-          <figcaption>Full pipeline: preprocessing (run once) feeds a fast, per-stakeholder ranking and clustering step.</figcaption>
-        </figure>
+        <!-- INTERACTIVE MAP (kept structurally identical for js/sdss-map.js) -->
+        <div class="explorer">
+          <div class="toolbar">
+            <h3>Explore the recommendations</h3>
+            <p>Pick a stakeholder profile to see which parcels the model recommends. Click any parcel for details.</p>
+          </div>
+          <div class="scenario-btns" id="scenarioBtns"></div>
+          <div class="map-wrap">
+            <div id="map"></div>
+            <aside class="info-panel" id="infoPanel"></aside>
+          </div>
+        </div>
+        <p class="text-sm mt-6 max-w-3xl opacity-80">
+          Each result is the highest-ranked parcel — or, when no single parcel fits the target acreage,
+          a contiguous cluster the model grows by absorbing the best-scoring neighbors while keeping the
+          shape compact. All ten profiles run against the same underlying parcel scores; only the weights differ.
+        </p>
+      </section>
 
-        <h2>What the results show</h2>
-        <p>The ten profiles above trace the whole trade-off. A fiscal profile, minimizing cost under a
-          tight budget, settles on a single affordable parcel in Hopkinton; a biodiversity profile assembles
-          a compact, higher-value cluster of rare habitat in Parishville; and the water-weighted profiles
-          shift the recommendation to Long Lake, near the rivers and lakes. Because the model enforces each
-          profile's spending cap as a hard limit and only grows a contiguous cluster when a single parcel is
-          too small, every result stays both affordable and manageable as one connected acquisition.</p>
+      <section class="jank-section bg-[#7c8b5e] text-white">
+        <div class="mb-8 flex items-center gap-4">
+          <iconify-icon icon="mdi:cog-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">HOW IT WORKS</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-4">The model runs in two halves. A one-time preprocessing stage scores every 30-metre cell of the Adirondacks on four ecological factors — land cover &amp; slope suitability, riparian proximity, rare-habitat value (EDGE), and protection-gap value — and summarizes each factor onto candidate parcels as a per-acre mean. Then, for a given stakeholder, those factor scores plus parcel size and cost are normalized and combined into a single weighted index; the highest-scoring parcel or grown cluster wins.</p>
+        <p class="text-lg leading-relaxed max-w-3xl mb-8">Keeping the ecological scores as per-acre <em>means</em> (rather than totals) is what lets the six criteria stay independent — a big tract and a small tract of equal habitat quality score the same, and only the explicit size weight rewards bigness.</p>
 
-        <h2>Grounding in the literature</h2>
-        <p>The normalize-then-weight structure follows Li &amp; Nigh (2011); the continuous slope-suitability
-          curve follows Store &amp; Kangas (2001); riparian buffers follow Wenger (1999) and the Adirondack
-          Park Agency shoreline rules; rare-habitat ranks are cardinalized with Rank-Order-Centroid weights
-          (Barron &amp; Barrett 1996); and the compact-cluster growth borrows the boundary-length logic of
-          Marxan (Watts et al. 2009).</p>
-        <p><a class="btn" href="../assets/Karim_Nabahi_Adirondack_SDSS.pdf" style="padding:9px 18px">Read the full paper (PDF) &rarr;</a></p>
-      </div>
-    </div>
-  </section>
+        <div class="thick-border-orange bg-white p-2 inline-block mb-2">
+          <img src="../assets/flowchart.png" alt="Process flowchart of the SDSS pipeline" class="block max-w-full">
+        </div>
+        <p class="text-sm opacity-80 mb-10">Full pipeline: preprocessing (run once) feeds a fast, per-stakeholder ranking and clustering step.</p>
 
-  <footer>
-    <div class="container">
-      <a href="../index.html">&larr; Back to projects</a> &nbsp;&middot;&nbsp;
-      &copy; <span id="yr"></span> Karim Nabahi
-    </div>
+        <div class="mb-8 flex items-center gap-4">
+          <iconify-icon icon="mdi:chart-box-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">WHAT THE RESULTS SHOW</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl">The ten profiles above trace the whole trade-off. A fiscal profile, minimizing cost under a tight budget, settles on a single affordable parcel in Hopkinton; a biodiversity profile assembles a compact, higher-value cluster of rare habitat in Parishville; and the water-weighted profiles shift the recommendation to Long Lake, near the rivers and lakes. Because the model enforces each profile's spending cap as a hard limit and only grows a contiguous cluster when a single parcel is too small, every result stays both affordable and manageable as one connected acquisition.</p>
+      </section>
+
+      <section class="jank-section bg-white text-black">
+        <div class="mb-8 flex items-center gap-4">
+          <iconify-icon icon="mdi:book-open-page-variant-outline" class="text-4xl text-blue-600"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">GROUNDING IN THE LITERATURE</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-8">The normalize-then-weight structure follows Li &amp; Nigh (2011); the continuous slope-suitability curve follows Store &amp; Kangas (2001); riparian buffers follow Wenger (1999) and the Adirondack Park Agency shoreline rules; rare-habitat ranks are cardinalized with Rank-Order-Centroid weights (Barron &amp; Barrett 1996); and the compact-cluster growth borrows the boundary-length logic of Marxan (Watts et al. 2009).</p>
+        <div class="yellow-callout">
+          <a href="../assets/Karim_Nabahi_Adirondack_SDSS.pdf" class="classic-link font-bold text-lg">CLICK HERE TO READ THE FULL PAPER (PDF)!</a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <footer class="text-center py-8 font-mono text-sm uppercase">
+    <a href="../index.html" class="classic-link">&larr; Back to projects</a> &bull;
+    &copy; <span id="yr"></span> Karim Nabahi &bull; Best viewed in Netscape Navigator 4.0
   </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
