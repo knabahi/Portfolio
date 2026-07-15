@@ -1,125 +1,150 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Karim Nabahi — GIS & Geoinformatics</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Karim Nabahi — GIS &amp; Geoinformatics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'classic-blue': '#0000EE',
+            'jank-peach': '#f2ead9',
+            'jank-oxblood': '#6b3a2e',
+            'jank-olive': '#7c8b5e',
+            'jank-yellow': '#ffff00'
+          },
+          fontFamily: {
+            'jank-heading': ['"Times New Roman"', 'Times', 'serif'],
+            'jank-body': ['"Times New Roman"', 'Times', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f2ead9;
+      background-image: url("assets/adk_contours.svg");
+      background-size: 700px 700px;
+      background-repeat: repeat;
+      margin: 0;
+      padding: 40px;
+    }
+    .jank-container { max-width: 1200px; margin: 0 auto; border: 4px solid #3b2f26; background: #fff; display: grid; grid-template-columns: 200px 1fr; }
+    .sidebar { background: #3b2f26; color: white; padding: 20px; border-right: 4px solid #3b2f26; }
+    .sidebar a { color: #fff; text-decoration: underline; display: block; margin-bottom: 15px; font-family: 'Times New Roman', Times, serif; font-size: 1.1rem; }
+    .sidebar a:hover { color: #ffff00; }
+    .top-bar { grid-column: 1 / -1; background: #6b3a2e; color: white; padding: 15px 30px; border-bottom: 4px solid #3b2f26; display: flex; align-items: center; gap: 20px; }
+    .top-bar h1 { font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 3.5rem; margin: 0; letter-spacing: 2px; }
+    .jank-section { padding: 40px; border-bottom: 4px solid #3b2f26; }
+    .thick-border-blue { border: 8px solid #0000FF; }
+    .thick-border-red { border: 8px solid #FF0000; }
+    .thick-border-orange { border: 8px solid #FFA500; }
+    a.classic-link { color: #0000EE; text-decoration: underline; }
+    a.classic-link:hover { color: #FF0000; }
+    .yellow-callout { background: #ffff00; border: 3px dashed #000; padding: 15px; display: inline-block; margin-top: 20px; }
+  </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container">
-      <div class="brand">Karim <span>Nabahi</span></div>
-      <div class="links">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="resume.html">Resume</a>
-        <a href="#contact">Contact</a>
+  <div class="jank-container">
+    <header class="top-bar">
+      <iconify-icon icon="mdi:compass-outline" class="text-5xl text-jank-yellow"></iconify-icon>
+      <h1 id="site-title">KARIM NABAHI</h1>
+    </header>
+    <aside class="sidebar">
+      <nav class="flex flex-col">
+        <a id="nav-projects" href="#projects">PROJECTS</a>
+        <a id="nav-about" href="#about">ABOUT ME</a>
+        <a id="nav-resume" href="resume.html">MY RESUME</a>
+        <a id="nav-contact" href="#contact">CONTACT</a>
+      </nav>
+      <div class="mt-10">
+        <iconify-icon icon="mdi:emoticon-happy-outline" class="text-4xl text-white/50"></iconify-icon>
+        <p class="text-xs mt-2 font-mono">WELCOME TO MY HOMEPAGE!</p>
       </div>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="container hero-layout">
-      <div>
-        <h1>Karim Nabahi</h1>
-        <p>Graduate geoinformatics student combining GIS and conservation field experience
-           to apply spatial analysis to environmental stewardship.</p>
-        <div class="cta">
-          <a class="btn" href="#projects">View projects</a>
-          <a class="btn secondary" href="#contact">Get in touch</a>
-        </div>
-      </div>
-      <img class="hero-photo" src="assets/field-scc-2.jpg" alt="Hauling a cut log along a backcountry trail crew route">
-    </div>
-  </header>
-
-  <section id="projects">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Selected Work</div>
-        <h2>Projects</h2>
-        <p>Applied spatial analysis, modeling, and cartography.</p>
-      </div>
-      <div class="projects">
-        <a class="card" href="projects/adk-sdss.html" style="color:inherit">
-          <div class="thumb" style="background-image:url('assets/sdss-thumb.png')"></div>
-          <div class="body">
-            <div class="eyebrow">Spatial Decision Support &middot; ArcGIS + Python</div>
-            <h3>2,500 Acres in the Adirondacks</h3>
-            <p>A spatial decision-support system that identifies which private parcels New York
-               should acquire to satisfy a 2025 constitutional amendment — ranking parcels (and
-               growing contiguous clusters) under different stakeholder priorities.</p>
-            <span class="btn" style="padding:9px 18px">Explore the interactive map &rarr;</span>
-            <div class="tags">
-              <span class="tag-chip">ArcGIS Pro</span>
-              <span class="tag-chip">Python / arcpy</span>
-              <span class="tag-chip">Multi-Criteria Analysis</span>
-              <span class="tag-chip">Leaflet</span>
+    </aside>
+    <main class="bg-white">
+      <section id="hero" class="jank-section bg-[#1c2321] text-white border border-[#2d3835]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="font-['Times_New_Roman'] font-bold text-6xl mb-4 text-jank-yellow">GEOSPATIAL ANALYST</h2>
+            <p class="font-['Times_New_Roman'] text-xl leading-relaxed">Graduate geoinformatics student combining GIS and conservation field experience to apply spatial analysis to environmental stewardship.</p>
+            <div class="yellow-callout">
+              <a id="cta-contact" href="#contact" class="classic-link font-bold text-lg">CLICK HERE TO GET IN TOUCH!</a>
             </div>
           </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">About</div>
-        <h2>About me</h2>
-      </div>
-      <div class="about-layout">
-        <div class="prose">
-          <p>GIS analyst with a background in Environmental Conservation and Computer Science.
-             Currently pursuing an M.S. in Geoinformatics at CUNY Hunter College, with a B.Sc. in
-             Computer Science from Bishop's University.</p>
-          <p>My work sits at the intersection of spatial analysis and resource management. I've
-             applied ArcGIS Field Maps in the field to map aquatic invasive species spread on Lake
-             Champlain, conducted site assessments for watershed restoration at Mesa Verde National
-             Park, and am currently completing a GIS internship with the NYC Department of
-             Transportation, where I support asset mapping and spatial data workflows for
-             transportation infrastructure. Across these roles I've built a practical toolkit that
-             spans ArcGIS Pro and Field Maps for data collection, Python and arcpy for automating
-             spatial workflows, and multi-criteria analysis for turning raw geographic data into
-             ranked, defensible recommendations, the same approach behind the parcel-prioritization
-             project featured above. I'm comfortable moving between the field, where the data
-             originates, and the desk, where it gets modeled, analyzed, and mapped for decision
-             makers.</p>
-          <p>Before pivoting to geoinformatics, I spent three field seasons with the Vermont Youth
-             Conservation Corps and Southwest Conservation Corps, working alongside the NPS, BLM,
-             and state environmental agencies on trail, watershed, and land restoration projects
-             across Vermont, New York, Colorado, and Florida.</p>
-          <p>I'm interested in roles that combine geospatial analysis with environmental
-             stewardship, and hope to put both skill sets to work in that space.</p>
+          <div class="thick-border-orange p-1 bg-white">
+            <div class="aspect-square overflow-hidden">
+              <img src="assets/field-scc-2.jpg" class="w-full h-full object-cover" alt="Hauling a cut log along a backcountry trail crew route">
+            </div>
+          </div>
         </div>
-        <div class="photo-grid">
-          <img src="assets/field-vycc-1.jpg" alt="Removing invasive water chestnut on Lake Champlain with the Vermont Youth Conservation Corps">
-          <img src="assets/field-scc-3.jpg" alt="Building trail tread through an aspen grove with a mattock">
+      </section>
+
+      <section id="projects" class="jank-section bg-[#3b2f26] text-white">
+        <div class="mb-8 flex items-center gap-4">
+          <iconify-icon icon="mdi:map-marker-radius" class="text-4xl text-orange-500"></iconify-icon>
+          <h2 class="font-['Times_New_Roman'] font-bold text-4xl tracking-widest">SELECTED WORK / PROJECTS</h2>
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="thick-border-blue bg-white text-black overflow-hidden flex flex-col md:flex-row">
+          <div class="border-r-4 border-blue-600 flex items-center justify-center" style="height:460px; width:690px; flex-shrink:0">
+            <img src="assets/sdss-thumb.png" style="width:690px; height:460px" class="object-contain block" alt="Locator map for the 2,500 Acres in the Adirondacks project">
+          </div>
+          <div class="p-6 flex flex-col">
+            <span class="text-red-600 font-bold uppercase text-xs mb-2">Spatial Decision Support &bull; ArcGIS + Python</span>
+            <h3 class="text-2xl font-bold mb-4 italic">2,500 Acres in the Adirondacks</h3>
+            <p class="font-['Times_New_Roman'] mb-6">A spatial decision-support system that identifies which private parcels New York should acquire to satisfy a 2025 constitutional amendment — ranking parcels (and growing contiguous clusters) under different stakeholder priorities.</p>
+            <a id="project-link" href="projects/adk-sdss.html" class="classic-link font-bold mb-6 block underline">Explore the interactive map &gt;&gt;</a>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 mt-auto">
+              <div class="flex items-center gap-1 font-bold text-sm"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> ArcGIS Pro</div>
+              <div class="flex items-center gap-1 font-bold text-sm"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Python / arcpy</div>
+              <div class="flex items-center gap-1 font-bold text-sm"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Multi-Criteria Analysis</div>
+              <div class="flex items-center gap-1 font-bold text-sm"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Leaflet</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <section id="contact">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">Contact</div>
-        <h2>Get in touch</h2>
-      </div>
-      <div class="prose">
-        <p>
-          Email: <a href="mailto:karim.nabahi50@login.cuny.edu">karim.nabahi50@login.cuny.edu</a><br>
-          LinkedIn: <a href="https://www.linkedin.com/in/karimnabahi/">https://www.linkedin.com/in/karimnabahi/</a><br>
-        </p>
-      </div>
-    </div>
-  </section>
+      <section id="about" class="jank-section bg-[#7c8b5e] text-white">
+        <div class="flex items-center gap-4 mb-8">
+          <iconify-icon icon="mdi:account-box-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-['Times_New_Roman'] font-bold text-4xl tracking-widest">ALL ABOUT ME</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div class="font-['Times_New_Roman'] text-lg space-y-4">
+            <p>GIS analyst with a background in Environmental Conservation and Computer Science. Currently pursuing an M.S. in Geoinformatics at CUNY Hunter College, with a B.Sc. in Computer Science from Bishop's University.</p>
+            <p>My work sits at the intersection of spatial analysis and resource management. I've applied ArcGIS Field Maps in the field to map aquatic invasive species spread on Lake Champlain, conducted site assessments for watershed restoration at Mesa Verde National Park...</p>
+            <p>I'm comfortable moving between the field, where the data originates, and the desk, where it gets modeled, analyzed, and mapped for decision makers.</p>
+          </div>
+          <div class="space-y-6">
+            <div class="thick-border-red bg-white p-1">
+              <img src="assets/field-scc-3.jpg" class="w-full h-auto block" alt="Building trail tread through an aspen grove with a mattock">
+            </div>
+            <div class="thick-border-blue bg-white p-1">
+              <img src="assets/field-vycc-1.jpg" class="w-full h-auto block" alt="Removing invasive water chestnut on Lake Champlain with the Vermont Youth Conservation Corps">
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <footer>
-    <div class="container">
-      &copy; <span id="yr"></span> Karim Nabahi. Built with plain HTML, CSS, and Leaflet.
-    </div>
+      <section id="contact" class="jank-section bg-white text-black">
+        <div class="flex items-center gap-4 mb-6">
+          <iconify-icon icon="mdi:email-fast-outline" class="text-4xl text-blue-600"></iconify-icon>
+          <h2 class="font-['Times_New_Roman'] font-bold text-4xl tracking-widest">GET IN TOUCH TODAY!</h2>
+        </div>
+        <div class="font-['Times_New_Roman'] text-xl space-y-4 bg-jank-peach p-8 thick-border-orange">
+          <p>Email: <a id="email-link" href="mailto:karim.nabahi50@login.cuny.edu" class="classic-link">karim.nabahi50@login.cuny.edu</a></p>
+          <p>LinkedIn: <a id="linkedin-link" href="https://www.linkedin.com/in/karimnabahi/" class="classic-link">https://www.linkedin.com/in/karimnabahi/</a></p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="text-center py-8 font-mono text-sm uppercase">
+    &copy; <span id="yr"></span> Karim Nabahi &bull; Built with pure HTML/CSS &bull; Best viewed in Netscape Navigator 4.0
   </footer>
   <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
