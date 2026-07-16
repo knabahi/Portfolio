@@ -8,46 +8,10 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'classic-blue': '#0000EE',
-            'jank-peach': '#f2ead9',
-            'jank-oxblood': '#6b3a2e',
-            'jank-olive': '#7c8b5e',
-            'jank-yellow': '#ffff00'
-          }
-        }
-      }
-    }
-  </script>
+  <script src="../js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="../css/jank.css">
   <style>
-    body {
-      background-color: #f2ead9;
-      background-image: url("../assets/adk_contours.svg");
-      background-size: 700px 700px;
-      background-repeat: repeat;
-      margin: 0;
-      padding: 40px;
-      font-family: 'Times New Roman', Times, serif;
-    }
-    .jank-container { max-width: 1200px; margin: 0 auto; border: 4px solid #3b2f26; background: #fff; display: grid; grid-template-columns: 200px 1fr; }
-    .sidebar { background: #3b2f26; color: white; padding: 20px; border-right: 4px solid #3b2f26; }
-    .sidebar a { color: #fff; text-decoration: underline; display: block; margin-bottom: 15px; font-size: 1.1rem; }
-    .sidebar a:hover { color: #ffff00; }
-    .top-bar { grid-column: 1 / -1; background: #6b3a2e; color: white; padding: 15px 30px; border-bottom: 4px solid #3b2f26; display: flex; align-items: center; gap: 20px; }
-    .top-bar h1 { font-weight: bold; font-size: 3.5rem; margin: 0; letter-spacing: 2px; }
-    .jank-section { padding: 40px 0; margin: 0 20px; border-bottom: 4px solid #3b2f26; }
-    .text-pad { padding: 0 24px; }
-    .frame-rust { border: 8px solid #b5541f; }
-    .frame-gold { border: 8px solid #c99a3b; }
-    .frame-teal { border: 8px solid #3d6b66; }
-    .frame-oxblood { border: 8px solid #6b3a2e; }
-    a.classic-link { color: #0000EE; text-decoration: underline; }
-    a.classic-link:hover { color: #FF0000; }
-    .yellow-callout { background: #ffff00; border: 3px dashed #000; padding: 15px; display: inline-block; }
+    body { font-family: 'Times New Roman', Times, serif; }
     .meta-stat { border: 2px solid #fff; padding: 10px 16px; }
     .meta-stat .k { font-size: .7rem; text-transform: uppercase; letter-spacing: 1px; opacity: .7; }
     .meta-stat .v { font-weight: bold; }
