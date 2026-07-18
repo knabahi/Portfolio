@@ -9,11 +9,11 @@
   <script src="js/tailwind-config.js"></script>
   <link rel="stylesheet" href="css/jank.css">
   <style>
-    body { font-family: 'Times New Roman', Times, serif; }
     .resume-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; }
     .resume-entry { margin-bottom: 26px; }
     .resume-entry ul { margin: 8px 0 0; padding-left: 1.2em; }
     .resume-entry li { margin-bottom: 6px; }
+    .resume-card { background: #fff; color: #000; padding: 1.5rem; }
   </style>
 </head>
 <body>
@@ -51,12 +51,12 @@
 
       <section class="jank-section bg-[#3b2f26] text-white">
         <div class="text-pad">
-        <div class="mb-8 flex items-center gap-4">
+        <div class="section-header mb-8">
           <iconify-icon icon="mdi:school-outline" class="text-4xl text-orange-400"></iconify-icon>
           <h2 class="font-bold text-4xl tracking-widest">EDUCATION</h2>
         </div>
 
-        <div class="frame-rust bg-white text-black p-6 mb-6">
+        <div class="frame-rust resume-card mb-6">
           <div class="resume-entry mb-0">
             <div class="resume-row">
               <span class="font-bold text-lg">CUNY Hunter College</span>
@@ -69,7 +69,7 @@
           </div>
         </div>
 
-        <div class="frame-rust bg-white text-black p-6">
+        <div class="frame-rust resume-card">
           <div class="resume-entry mb-0">
             <div class="resume-row">
               <span class="font-bold text-lg">Bishop's University</span>
@@ -89,12 +89,12 @@
 
       <section class="jank-section bg-[#7c8b5e] text-white">
         <div class="text-pad">
-        <div class="mb-8 flex items-center gap-4">
+        <div class="section-header mb-8">
           <iconify-icon icon="mdi:briefcase-outline" class="text-4xl text-jank-yellow"></iconify-icon>
           <h2 class="font-bold text-4xl tracking-widest">EXPERIENCE</h2>
         </div>
 
-        <div class="frame-rust bg-white text-black p-6 mb-6">
+        <div class="frame-rust resume-card mb-6">
           <div class="resume-entry mb-0">
             <div class="resume-row">
               <span class="font-bold text-lg">Vermont Youth Conservation Corps</span>
@@ -118,7 +118,7 @@
           </div>
         </div>
 
-        <div class="frame-rust bg-white text-black p-6 mb-6">
+        <div class="frame-rust resume-card mb-6">
           <div class="resume-entry mb-0">
             <div class="resume-row">
               <span class="font-bold text-lg">City Parks Foundation</span>
@@ -135,7 +135,7 @@
           </div>
         </div>
 
-        <div class="frame-rust bg-white text-black p-6 mb-6">
+        <div class="frame-rust resume-card mb-6">
           <div class="resume-entry mb-0">
             <div class="resume-row">
               <span class="font-bold text-lg">Southwest Conservation Corps</span>
@@ -154,7 +154,7 @@
           </div>
         </div>
 
-        <div class="frame-rust bg-white text-black p-6 mb-6">
+        <div class="frame-rust resume-card mb-6">
           <div class="resume-entry mb-0">
             <div class="resume-row">
               <span class="font-bold text-lg">Almod Diamonds Ltd</span>
@@ -171,7 +171,7 @@
           </div>
         </div>
 
-        <div class="frame-rust bg-white text-black p-6">
+        <div class="frame-rust resume-card">
           <div class="resume-entry mb-0">
             <div class="resume-row">
               <span class="font-bold text-lg">Openface Internet Inc.</span>
@@ -191,7 +191,7 @@
 
       <section class="jank-section bg-white text-black">
         <div class="text-pad">
-        <div class="flex items-center gap-4 mb-8">
+        <div class="section-header mb-8">
           <iconify-icon icon="mdi:star-outline" class="text-4xl text-blue-600"></iconify-icon>
           <h2 class="font-bold text-4xl tracking-widest">SKILLS &amp; CERTIFICATIONS</h2>
         </div>
@@ -199,32 +199,32 @@
           <div>
             <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">GIS &amp; Technical</h4>
             <div class="flex flex-col gap-1">
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> ArcGIS Pro</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> ArcGIS Field Maps</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> ArcPy</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> IPSS</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Python</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> C / C++ / Java</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> SQL</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Windows / Linux</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcGIS Pro</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcGIS Field Maps</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcPy</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> IPSS</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Python</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> C / C++ / Java</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> SQL</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Windows / Linux</div>
             </div>
           </div>
           <div>
             <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">Certifications</h4>
             <div class="flex flex-col gap-1">
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Wilderness First Aid</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> CPR</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Wilderness First Aid</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> CPR</div>
             </div>
           </div>
           <div>
             <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">Other</h4>
             <div class="flex flex-col gap-1">
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Fluent in French</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Stakeholder Coordination</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Technical Documentation</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Crew Leadership</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Environmental Education</div>
-              <div class="flex items-center gap-1"><iconify-icon icon="mdi:play" class="text-blue-600 text-xs"></iconify-icon> Logistics Planning</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Fluent in French</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Stakeholder Coordination</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Technical Documentation</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Crew Leadership</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Environmental Education</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Logistics Planning</div>
             </div>
           </div>
         </div>

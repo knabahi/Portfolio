@@ -8,10 +8,6 @@ tailwind.config = {
         'jank-oxblood': '#6b3a2e',
         'jank-olive': '#7c8b5e',
         'jank-yellow': '#ffff00'
-      },
-      fontFamily: {
-        'jank-heading': ['"Times New Roman"', 'Times', 'serif'],
-        'jank-body': ['"Times New Roman"', 'Times', 'serif']
       }
     }
   }
