@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Resume — Karim Nabahi</title>
+  <title>Resume | Karim Nabahi</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <script src="js/tailwind-config.js"></script>
@@ -11,8 +11,15 @@
   <style>
     .resume-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; }
     .resume-entry { margin-bottom: 26px; }
-    .resume-entry ul { margin: 8px 0 0; padding-left: 1.2em; }
-    .resume-entry li { margin-bottom: 6px; }
+    /* Tailwind's Preflight reset strips list markers from every ul, so these are
+       set explicitly with !important to win against the CDN-injected stylesheet. */
+    .resume-entry ul {
+      margin: 8px 0 0;
+      padding-left: 1.4em;
+      list-style-type: square !important;
+      list-style-position: outside !important;
+    }
+    .resume-entry li { margin-bottom: 6px; display: list-item !important; }
     .resume-card { background: #fff; color: #000; padding: 1.5rem; }
   </style>
 </head>
@@ -39,7 +46,7 @@
       <section class="jank-section bg-[#1c2321] text-white">
         <div class="text-pad">
           <h2 class="font-bold text-6xl mb-4 text-jank-yellow">RESUME</h2>
-          <p class="text-xl leading-relaxed max-w-3xl">GIS analyst with field experience applying geospatial tools to watershed management, invasive species monitoring, and land restoration across federal, state, and municipal contexts. Skilled at translating ground-level observations into mapped, actionable data for agency and community stakeholders.</p>
+          <p class="text-xl leading-relaxed max-w-3xl">GIS analyst with a Computer Science background and field experience applying geospatial tools to watershed management, invasive species monitoring, and land restoration across federal, state, and municipal contexts. Comfortable moving between the field, where the data originates, and the desk, where it gets modeled, analyzed, and mapped for decision makers.</p>
           <div class="flex flex-wrap gap-6 mt-6 items-center">
             <div class="yellow-callout">
               <a href="assets/Resume_Karim.pdf" target="_blank" rel="noopener" class="classic-link font-bold text-lg">CLICK HERE TO DOWNLOAD PDF!</a>
@@ -64,8 +71,12 @@
             </div>
             <div class="resume-row">
               <span class="italic">M.S. Geoinformatics</span>
-              <span class="text-sm">2025 &ndash; Present</span>
+              <span class="text-sm">2025 &ndash; Present (expected 2027)</span>
             </div>
+            <ul>
+              <li>Cumulative GPA 3.94. Coursework in GeoComputation, Advanced Geoinformatics, Quantitative Methods in Geography, and the concepts and theories behind geographic information systems.</li>
+              <li>Placed as a Geoinformatics Research Intern with the New York City Department of Transportation, building a computer vision pipeline to automatically detect damaged and vandalized street name signs across the city.</li>
+            </ul>
           </div>
         </div>
 
@@ -80,7 +91,7 @@
               <span class="text-sm">2019 &ndash; 2024</span>
             </div>
             <ul>
-              <li>Teacher's Assistant, Computer Organization and Logic Design: mentored students and facilitated lab troubleshooting sessions.</li>
+              <li>Teaching Assistant, Computer Organization and Logic Design: mentored students and facilitated lab troubleshooting sessions.</li>
             </ul>
           </div>
         </div>
@@ -92,6 +103,27 @@
         <div class="section-header mb-8">
           <iconify-icon icon="mdi:briefcase-outline" class="text-4xl text-jank-yellow"></iconify-icon>
           <h2 class="font-bold text-4xl tracking-widest">EXPERIENCE</h2>
+        </div>
+
+        <div class="frame-rust resume-card mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">NYC Department of Transportation</span>
+              <span class="text-sm">New York, NY</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Geoinformatics Research Intern (via CUNY Hunter College)</span>
+              <span class="text-sm">Summer 2026</span>
+            </div>
+            <ul>
+              <li>Designed and implemented an end-to-end computer vision pipeline that flags damaged, missing, bent, and vandalized street name signs from imagery, replacing a manual field inspection process with an automated, scalable one.</li>
+              <li>Architected the data flow from the Sign Information Management System (SIMS) inventory through automated image retrieval into a YOLO object detection model.</li>
+              <li>Built and debugged a Python client against a third-party imagery API, handling spatial feature queries and service authentication.</li>
+              <li>Diagnosed class imbalance in the training set, sourced and labeled external seed images to backfill underrepresented damage categories, and retrained the model to widen detection coverage.</li>
+              <li>Built a run-history tracking system and an interactive demo notebook to compare model performance across training iterations and present results to agency stakeholders.</li>
+              <li>Evaluated and ruled out a LiDAR point cloud approach after determining imagery better fit the project's accuracy and cost constraints.</li>
+            </ul>
+          </div>
         </div>
 
         <div class="frame-rust resume-card mb-6">
@@ -195,18 +227,33 @@
           <iconify-icon icon="mdi:star-outline" class="text-4xl text-blue-600"></iconify-icon>
           <h2 class="font-bold text-4xl tracking-widest">SKILLS &amp; CERTIFICATIONS</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">GIS &amp; Technical</h4>
             <div class="flex flex-col gap-1">
               <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcGIS Pro</div>
               <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcGIS Field Maps</div>
               <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcPy</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> QGIS</div>
               <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> IPSS</div>
               <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Python</div>
               <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> C / C++ / Java</div>
-              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> SQL</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> SQL / PostgreSQL / PostGIS</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Git / Version Control</div>
               <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Windows / Linux</div>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">Machine Learning &amp; Imagery</h4>
+            <div class="flex flex-col gap-1">
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Computer Vision</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Object Detection (YOLO)</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Model Training &amp; Evaluation</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Data Labeling</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Imagery Analysis</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> REST API Integration</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Data Pipeline Design</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Jupyter Notebooks</div>
             </div>
           </div>
           <div>
