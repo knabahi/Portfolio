@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2 500 acres dans les Adirondacks — Karim Nabahi</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="../js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="../css/jank.css">
+  <style>
+    .meta-stat { border: 2px solid #fff; padding: 10px 16px; }
+    .meta-stat .k { font-size: .7rem; text-transform: uppercase; letter-spacing: 1px; opacity: .7; }
+    .meta-stat .v { font-weight: bold; }
+    /* explorer keeps its own look from ../css/style.css so the map/JS integration is untouched */
+    .explorer { border: 8px solid #3d6b66 !important; border-radius: 0 !important; }
+  </style>
+</head>
+<body>
+  <div class="jank-container">
+    <header class="top-bar">
+      <iconify-icon icon="mdi:compass-outline" class="text-5xl text-jank-yellow"></iconify-icon>
+      <h1>KARIM NABAHI</h1>
+      <nav class="lang-toggle"><span class="lang-current">FR</span> | <a href="adk-sdss.html">EN</a></nav>
+    </header>
+    <aside class="sidebar">
+      <nav class="flex flex-col">
+        <a href="../index-fr.html#projects">PROJETS</a>
+        <a href="../index-fr.html#about">À PROPOS DE MOI</a>
+        <a href="../resume-fr.html">MON CV</a>
+        <a href="../index-fr.html#contact">CONTACT</a>
+      </nav>
+      <div class="mt-10">
+        <iconify-icon icon="mdi:map-outline" class="text-4xl text-white/50"></iconify-icon>
+        <p class="text-xs mt-2 font-mono">UN VRAI PROJET !</p>
+      </div>
+    </aside>
+    <main class="bg-white">
+
+      <section class="jank-section bg-[#1c2321] text-white">
+        <div class="text-pad">
+        <span class="uppercase text-xs tracking-widest text-jank-yellow font-bold">Système d'aide à la décision spatiale</span>
+        <h2 class="font-bold text-5xl my-4">2 500 ACRES DANS LES ADIRONDACKS</h2>
+        <p class="text-xl leading-relaxed max-w-3xl">En 2025, les électeurs de New York ont adopté un amendement constitutionnel obligeant l'État à acquérir 2 500 acres de terres « de valeur égale ou supérieure » pour compenser les terres prélevées sur la Forest Preserve. L'amendement n'a jamais défini la <em>valeur</em> — j'ai donc construit un système qui le fait, et qui recommande quelles parcelles acheter selon les priorités de différentes parties prenantes.</p>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <div class="meta-stat"><div class="k">Rôle</div><div class="v">Conception, modélisation, code</div></div>
+          <div class="meta-stat"><div class="k">Outils</div><div class="v">ArcGIS Pro, Python (arcpy), Leaflet</div></div>
+          <div class="meta-stat"><div class="k">Méthode</div><div class="v">Évaluation multicritère</div></div>
+          <div class="meta-stat"><div class="k">Cours</div><div class="v">GTECH 732, Hunter College</div></div>
+        </div>
+        </div>
+      </section>
+
+      <section class="jank-section bg-[#3b2f26] text-white">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:map-marker-question-outline" class="text-4xl text-orange-400"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">LE PROBLÈME</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-10">L'amendement a autorisé rétroactivement des pistes de ski et de biathlon construites sur 323 acres de la Forest Preserve protégée des Adirondacks, et exige en contrepartie que New York ajoute 2 500 nouveaux acres d'une valeur écologique comparable. Mais la « valeur » est subjective : un groupe de conservation, le gestionnaire des terres de l'État et un contribuable classeront chacun les parcelles candidates différemment. L'outil rend ces priorités explicites et montre comment l'acquisition recommandée évolue à mesure qu'elles changent.</p>
+        </div>
+
+        <!-- INTERACTIVE MAP (kept structurally identical for js/sdss-map.js) -->
+        <div class="explorer">
+          <div class="toolbar">
+            <h3>Explorez les recommandations</h3>
+            <p>Choisissez un profil de partie prenante pour voir quelles parcelles le modèle recommande. Cliquez sur une parcelle pour en voir les détails.</p>
+          </div>
+          <div class="scenario-btns" id="scenarioBtns"></div>
+          <div class="map-wrap">
+            <div id="map"></div>
+            <aside class="info-panel" id="infoPanel"></aside>
+          </div>
+        </div>
+        <div class="text-pad">
+        <p class="text-sm mt-6 max-w-3xl opacity-80">
+          Chaque résultat correspond à la parcelle la mieux classée — ou, lorsqu'aucune parcelle unique n'atteint la
+          superficie cible, à un groupe contigu que le modèle constitue en absorbant les parcelles voisines les mieux
+          notées tout en conservant une forme compacte. Les dix profils s'appuient tous sur les mêmes scores de
+          parcelles ; seule la pondération diffère.
+        </p>
+        </div>
+      </section>
+
+      <section class="jank-section bg-[#7c8b5e] text-white">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:cog-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">FONCTIONNEMENT</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-4">Le modèle s'exécute en deux temps. Une étape de prétraitement, réalisée une seule fois, attribue à chaque cellule de 30 mètres des Adirondacks un score selon quatre facteurs écologiques — l'aptitude du couvert végétal et de la pente, la proximité riveraine, la valeur d'habitat rare (EDGE) et la valeur de lacune de protection — puis résume chaque facteur à l'échelle des parcelles candidates sous forme de moyenne par acre. Ensuite, pour un profil de partie prenante donné, ces scores de facteurs, ainsi que la taille et le coût de la parcelle, sont normalisés et combinés en un indice pondéré unique ; la parcelle ou le groupe constitué au score le plus élevé l'emporte.</p>
+        <p class="text-lg leading-relaxed max-w-3xl mb-8">Conserver les scores écologiques sous forme de <em>moyennes</em> par acre (plutôt que de totaux) est ce qui permet aux six critères de rester indépendants — une grande et une petite parcelle de qualité d'habitat égale obtiennent le même score, et seule la pondération explicite de la taille récompense l'ampleur.</p>
+
+        <div class="frame-gold bg-white p-2 inline-block mb-2">
+          <img src="../assets/flowchart.png" alt="Organigramme du processus du système d'aide à la décision spatiale" class="block max-w-full">
+        </div>
+        <p class="text-sm opacity-80 mb-10">Pipeline complet : le prétraitement (exécuté une seule fois) alimente une étape rapide de classement et de regroupement par profil de partie prenante.</p>
+
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:chart-box-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">CE QUE MONTRENT LES RÉSULTATS</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl">Les dix profils ci-dessus retracent l'ensemble des compromis. Un profil budgétaire, qui minimise le coût sous une contrainte financière serrée, se fixe sur une seule parcelle abordable à Hopkinton ; un profil biodiversité constitue un groupe compact et de plus grande valeur d'habitat rare à Parishville ; et les profils axés sur l'eau déplacent la recommandation vers Long Lake, à proximité des rivières et des lacs. Comme le modèle applique le plafond de dépenses de chaque profil comme une limite stricte et ne forme un groupe contigu que lorsqu'une seule parcelle est trop petite, chaque résultat reste à la fois abordable et gérable en tant qu'acquisition unique et connectée.</p>
+        </div>
+      </section>
+
+      <section class="jank-section bg-white text-black">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:book-open-page-variant-outline" class="text-4xl text-blue-600"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">ANCRAGE DANS LA LITTÉRATURE</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-8">La structure de normalisation puis de pondération suit Li &amp; Nigh (2011) ; la courbe continue d'aptitude à la pente suit Store &amp; Kangas (2001) ; les zones tampons riveraines suivent Wenger (1999) et les règles de rivage de l'Adirondack Park Agency ; les rangs d'habitats rares sont cardinalisés à l'aide des poids de centroïde de rang (Rank-Order-Centroid, Barron &amp; Barrett 1996) ; et la croissance des groupes compacts s'inspire de la logique de longueur de bordure de Marxan (Watts et al. 2009).</p>
+        <div class="yellow-callout">
+          <a href="../assets/Karim_Nabahi_Adirondack_SDSS.pdf" class="classic-link font-bold text-lg">CLIQUEZ ICI POUR LIRE L'ARTICLE COMPLET (PDF) !</a>
+        </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <footer class="text-center py-8 font-mono text-sm uppercase">
+    <a href="../index-fr.html" class="classic-link">&larr; Retour aux projets</a> &bull;
+    &copy; <span id="yr"></span> Karim Nabahi &bull; Meilleur affichage avec Netscape Navigator 4.0
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/sdss-map.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

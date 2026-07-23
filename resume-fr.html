@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV | Karim Nabahi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/jank.css">
+  <style>
+    .resume-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; }
+    .resume-entry { margin-bottom: 26px; }
+    /* Tailwind's Preflight reset strips list markers from every ul, so these are
+       set explicitly with !important to win against the CDN-injected stylesheet. */
+    .resume-entry ul {
+      margin: 8px 0 0;
+      padding-left: 1.4em;
+      list-style-type: square !important;
+      list-style-position: outside !important;
+    }
+    .resume-entry li { margin-bottom: 6px; display: list-item !important; }
+    .resume-card { background: #fff; color: #000; padding: 1.5rem; }
+  </style>
+</head>
+<body>
+  <div class="jank-container">
+    <header class="top-bar">
+      <iconify-icon icon="mdi:compass-outline" class="text-5xl text-jank-yellow"></iconify-icon>
+      <h1>KARIM NABAHI</h1>
+      <nav class="lang-toggle"><span class="lang-current">FR</span> | <a href="resume.html">EN</a></nav>
+    </header>
+    <aside class="sidebar">
+      <nav class="flex flex-col">
+        <a href="index-fr.html#projects">PROJETS</a>
+        <a href="index-fr.html#about">À PROPOS DE MOI</a>
+        <a href="resume-fr.html">MON CV</a>
+        <a href="index-fr.html#contact">CONTACT</a>
+      </nav>
+      <div class="mt-10">
+        <iconify-icon icon="mdi:file-document-outline" class="text-4xl text-white/50"></iconify-icon>
+        <p class="text-xs mt-2 font-mono">MA PAGE CV !</p>
+      </div>
+    </aside>
+    <main class="bg-white">
+
+      <section class="jank-section bg-[#1c2321] text-white">
+        <div class="text-pad">
+          <h2 class="font-bold text-6xl mb-4 text-jank-yellow">CV</h2>
+          <p class="text-xl leading-relaxed max-w-3xl">Analyste SIG avec une formation en informatique et une expérience de terrain dans l'application d'outils géospatiaux à la gestion des bassins versants, au suivi des espèces envahissantes et à la restauration des terres, dans des contextes fédéraux, étatiques et municipaux. À l'aise autant sur le terrain, là où naissent les données, qu'au bureau, où elles sont modélisées, analysées et cartographiées pour les décideurs.</p>
+          <div class="flex flex-wrap gap-6 mt-6 items-center">
+            <div class="yellow-callout">
+              <a href="assets/Resume_Karim.pdf" target="_blank" rel="noopener" class="classic-link font-bold text-lg">CLIQUEZ ICI POUR TÉLÉCHARGER LE PDF !</a>
+            </div>
+            <a href="index-fr.html#contact" class="classic-link font-bold text-lg">Me contacter &gt;&gt;</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="jank-section bg-[#3b2f26] text-white">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:school-outline" class="text-4xl text-orange-400"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">FORMATION</h2>
+        </div>
+
+        <div class="frame-rust resume-card mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">CUNY Hunter College</span>
+              <span class="text-sm">New York City, NY</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">M.S. Géoinformatique</span>
+              <span class="text-sm">2025 &ndash; Présent (fin prévue en 2027)</span>
+            </div>
+            <ul>
+              <li>Moyenne cumulative de 3,94. Cours de géocalcul (GeoComputation), de géoinformatique avancée, de méthodes quantitatives en géographie, ainsi que sur les concepts et théories des systèmes d'information géographique.</li>
+              <li>Stagiaire de recherche en géoinformatique au sein du New York City Department of Transportation, où j'ai développé un système de vision par ordinateur pour détecter automatiquement les panneaux de rue endommagés ou vandalisés dans toute la ville.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="frame-rust resume-card">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Bishop's University</span>
+              <span class="text-sm">Sherbrooke, QC, Canada</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">B.Sc. Informatique, mineure en administration des affaires</span>
+              <span class="text-sm">2019 &ndash; 2024</span>
+            </div>
+            <ul>
+              <li>Assistant d'enseignement, Organisation des ordinateurs et conception logique : encadrement des étudiants et animation des séances de dépannage en laboratoire.</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <section class="jank-section bg-[#7c8b5e] text-white">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:briefcase-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">EXPÉRIENCE</h2>
+        </div>
+
+        <div class="frame-rust resume-card mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">NYC Department of Transportation</span>
+              <span class="text-sm">New York, NY</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Stagiaire de recherche en géoinformatique (via CUNY Hunter College)</span>
+              <span class="text-sm">Été 2026</span>
+            </div>
+            <ul>
+              <li>Conception et mise en œuvre d'un système de vision par ordinateur de bout en bout qui signale les panneaux de rue endommagés, manquants, tordus ou vandalisés à partir d'images, remplaçant un processus d'inspection manuelle sur le terrain par un processus automatisé et évolutif.</li>
+              <li>Conception du flux de données depuis l'inventaire du Sign Information Management System (SIMS), en passant par la récupération automatisée d'images, jusqu'à un modèle de détection d'objets YOLO.</li>
+              <li>Développement et débogage d'un client Python interagissant avec une API d'imagerie tierce, gérant les requêtes spatiales et l'authentification du service.</li>
+              <li>Diagnostic d'un déséquilibre des classes dans le jeu d'entraînement, recherche et annotation d'images supplémentaires pour combler les catégories de dommages sous-représentées, et réentraînement du modèle pour élargir la couverture de détection.</li>
+              <li>Développement d'un système de suivi de l'historique des exécutions et d'un notebook de démonstration interactif pour comparer les performances du modèle entre les itérations d'entraînement et présenter les résultats aux parties prenantes de l'agence.</li>
+              <li>Évaluation puis abandon d'une approche par nuage de points LiDAR après avoir déterminé que l'imagerie correspondait mieux aux contraintes de précision et de coût du projet.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="frame-rust resume-card mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Vermont Youth Conservation Corps</span>
+              <span class="text-sm">Richmond, VT</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Cheffe/Chef d'équipe de conservation</span>
+              <span class="text-sm">Mai &ndash; octobre 2025</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Membre d'équipe de conservation</span>
+              <span class="text-sm">Juin &ndash; août 2024</span>
+            </div>
+            <ul>
+              <li>Coordination interagences entre le VYCC et les organismes partenaires (VT Dept. of Forest, Parks &amp; Recreation ; Dept. of Environmental Conservation) sur plusieurs chantiers simultanés.</li>
+              <li>Supervision et encadrement d'une équipe de 6 à 8 personnes, avec formation aux compétences techniques et rétroaction structurée pour renforcer les capacités et former de futurs chefs d'équipe.</li>
+              <li>Direction de projets de protection des bassins versants, de sentiers et de menuiserie : construction de barrages filtrants et de jardins de rétention pour réduire le ruissellement vers le lac, et réalisation d'un site de camping distant entièrement accessible dans un parc d'État.</li>
+              <li>Utilisation d'ArcGIS Field Maps pour suivre l'avancement du retrait d'espèces envahissantes et cartographier la propagation de la châtaigne d'eau sur le lac Champlain, en partenariat avec le Dept. of Environmental Conservation.</li>
+              <li>Construction de marches en pierre et d'une traversée de sentier renforcée sur l'Appalachian Trail avec le Green Mountain Club ; développement du leadership grâce à un rôle tournant de chef d'équipe du jour.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="frame-rust resume-card mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">City Parks Foundation</span>
+              <span class="text-sm">New York, NY</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Stagiaire éducateur en plein air</span>
+              <span class="text-sm">Avril &ndash; mai 2025</span>
+            </div>
+            <ul>
+              <li>Conception et animation de programmes d'éducation environnementale pour des élèves de la maternelle à la 8e année, portant sur les habitats locaux, les cycles de vie des espèces et la conservation des bassins versants.</li>
+              <li>Animation d'expériences de tests d'eau sur le terrain, initiant les élèves à la méthodologie scientifique et au suivi environnemental.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="frame-rust resume-card mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Southwest Conservation Corps</span>
+              <span class="text-sm">Durango, CO &amp; Sarasota, FL</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Membre en conservation et intervention post-catastrophe</span>
+              <span class="text-sm">Septembre &ndash; novembre 2024</span>
+            </div>
+            <ul>
+              <li>Réalisation d'évaluations de site pour des analogues de barrages de castors sur la rivière Mancos au Mesa Verde NP afin de modéliser les stratégies de rétention des eaux souterraines et de réduction de l'érosion.</li>
+              <li>Réalisation de travaux de gestion des combustibles, d'infrastructures accessibles et d'installations pour visiteurs au Canyon of the Ancients NM, en collaboration avec le BLM et l'Ancestral Lands Conservation Corps.</li>
+              <li>Coordination de la planification d'itinéraires et encadrement d'une équipe de lycéens pour la construction d'un nouveau sentier de vélo accessible avec la Ridgway Area Trails Association.</li>
+              <li>Déploiement avec AmeriCorps Disaster Response à Sarasota et Tampa, FL : déblaiement, bâchage de toitures, évaluation des dommages et visites de bien-être auprès de communautés à risque.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="frame-rust resume-card mb-6">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Almod Diamonds Ltd</span>
+              <span class="text-sm">New York, NY</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Stagiaire au service d'assistance informatique</span>
+              <span class="text-sm">Janvier &ndash; mars 2019</span>
+            </div>
+            <ul>
+              <li>Standardisation de l'infrastructure informatique du bureau par la création et le déploiement d'une image de poste de travail Windows 10 ; documentation du processus pour les déploiements futurs.</li>
+              <li>Support technique pour la résolution de problèmes réseau, logiciels et matériels ; vérification de la nouvelle infrastructure réseau du bureau pour garantir une connectivité fiable.</li>
+              <li>Refonte du système de billetterie pour améliorer la précision du signalement des problèmes et son accessibilité pour le personnel non technique.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="frame-rust resume-card">
+          <div class="resume-entry mb-0">
+            <div class="resume-row">
+              <span class="font-bold text-lg">Openface Internet Inc.</span>
+              <span class="text-sm">Montréal, QC</span>
+            </div>
+            <div class="resume-row">
+              <span class="italic">Stagiaire à la livraison de services</span>
+              <span class="text-sm">Juillet &ndash; août 2019</span>
+            </div>
+            <ul>
+              <li>Vérification et mise à jour de la base de données des contrats clients pour en garantir l'exactitude et la validité sur l'ensemble des comptes actifs.</li>
+              <li>Coordination quotidienne avec les fournisseurs d'accès Internet (FAI) pour aligner leurs échéanciers sur les délais et exigences des projets clients.</li>
+              <li>Création de modèles de communication réutilisables ayant simplifié les échanges récurrents de l'équipe avec les FAI.</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <section class="jank-section bg-white text-black">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:star-outline" class="text-4xl text-blue-600"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">COMPÉTENCES ET CERTIFICATIONS</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">SIG et technique</h4>
+            <div class="flex flex-col gap-1">
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcGIS Pro</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcGIS Field Maps</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcPy</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> QGIS</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> IPSS</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Python</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> C / C++ / Java</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> SQL / PostgreSQL / PostGIS</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Git / Contrôle de version</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Windows / Linux</div>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">Apprentissage automatique et imagerie</h4>
+            <div class="flex flex-col gap-1">
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Vision par ordinateur</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Détection d'objets (YOLO)</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Entraînement et évaluation de modèles</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Annotation de données</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Analyse d'imagerie</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Intégration d'API REST</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Conception de pipelines de données</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Jupyter Notebooks</div>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">Certifications</h4>
+            <div class="flex flex-col gap-1">
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Premiers secours en milieu sauvage</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> RCR</div>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-bold mb-3 uppercase text-sm tracking-wide">Autre</h4>
+            <div class="flex flex-col gap-1">
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Anglais courant</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Coordination avec les parties prenantes</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Documentation technique</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Leadership d'équipe</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Éducation environnementale</div>
+              <div class="tool-tag"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Planification logistique</div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <footer class="text-center py-8 font-mono text-sm uppercase">
+    &copy; <span id="yr"></span> Karim Nabahi &bull; Conçu avec du HTML/CSS pur &bull; Meilleur affichage avec Netscape Navigator 4.0
+  </footer>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

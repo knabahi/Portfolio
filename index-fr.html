@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Karim Nabahi | SIG et géoinformatique</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="css/jank.css">
+  <style>
+    .yellow-callout { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="jank-container">
+    <header class="top-bar">
+      <iconify-icon icon="mdi:compass-outline" class="text-5xl text-jank-yellow"></iconify-icon>
+      <h1 id="site-title">KARIM NABAHI</h1>
+      <nav class="lang-toggle"><span class="lang-current">FR</span> | <a href="index.html">EN</a></nav>
+    </header>
+    <aside class="sidebar">
+      <nav class="flex flex-col">
+        <a id="nav-projects" href="#projects">PROJETS</a>
+        <a id="nav-about" href="#about">À PROPOS DE MOI</a>
+        <a id="nav-resume" href="resume-fr.html">MON CV</a>
+        <a id="nav-contact" href="#contact">CONTACT</a>
+      </nav>
+      <div class="mt-10">
+        <iconify-icon icon="mdi:emoticon-happy-outline" class="text-4xl text-white/50"></iconify-icon>
+        <p class="text-xs mt-2 font-mono">BIENVENUE SUR MA PAGE D'ACCUEIL !</p>
+      </div>
+    </aside>
+    <main class="bg-white">
+      <section id="hero" class="jank-section bg-[#1c2321] text-white border border-[#2d3835]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div class="text-pad">
+            <h2 class="font-bold text-6xl mb-4 text-jank-yellow">ANALYSTE GÉOSPATIAL</h2>
+            <p class="text-xl leading-relaxed">Étudiant diplômé en géoinformatique, je conçois des logiciels géospatiaux pour la ville de New York, dont récemment un système de vision par ordinateur pour le NYC DOT. Quatre saisons de travail de terrain en conservation derrière l'écran.</p>
+            <div class="yellow-callout">
+              <a id="cta-contact" href="#contact" class="classic-link font-bold text-lg">CLIQUEZ ICI POUR ME CONTACTER !</a>
+            </div>
+          </div>
+          <div class="frame-gold p-1 bg-white">
+            <img src="assets/field-scc-2.jpg" class="w-full h-auto block" alt="Transport d'une bille de bois coupée le long d'un sentier isolé, équipe de sentiers">
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="jank-section bg-[#3b2f26] text-white">
+        <div class="section-header mb-8 text-pad">
+          <iconify-icon icon="mdi:map-marker-radius" class="text-4xl text-orange-500"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">TRAVAUX SÉLECTIONNÉS / PROJETS</h2>
+        </div>
+        <div class="frame-teal bg-white text-black overflow-hidden flex flex-col md:flex-row items-start">
+          <div class="w-full md:w-[45%] flex-shrink-0" style="border-right:4px solid #3d6b66; aspect-ratio: 3 / 2;">
+            <img src="assets/sdss-thumb.png" class="w-full h-full object-cover block" alt="Carte de localisation du projet 2 500 acres dans les Adirondacks">
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <span class="text-red-600 font-bold uppercase text-xs mb-1">Aide à la décision spatiale &bull; ArcGIS + Python</span>
+            <h3 class="text-2xl font-bold mb-2 italic">2 500 acres dans les Adirondacks</h3>
+            <p class="mb-3">Un système d'aide à la décision spatiale qui identifie les parcelles privées que l'État de New York devrait acquérir pour satisfaire un amendement constitutionnel de 2025, en classant les parcelles (et en formant des groupes contigus) selon les priorités de différentes parties prenantes.</p>
+            <a id="project-link" href="projects/adk-sdss-fr.html" class="classic-link font-bold mb-3 block underline">Explorez la carte interactive &gt;&gt;</a>
+            <div class="flex flex-wrap gap-x-6 gap-y-1 mt-auto">
+              <div class="tool-tag font-bold text-sm"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> ArcGIS Pro</div>
+              <div class="tool-tag font-bold text-sm"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Python / arcpy</div>
+              <div class="tool-tag font-bold text-sm"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Analyse multicritère</div>
+              <div class="tool-tag font-bold text-sm"><iconify-icon icon="mdi:play" class="tool-tag-icon"></iconify-icon> Leaflet</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="jank-section bg-[#7c8b5e] text-white">
+        <div class="section-header mb-8 text-pad">
+          <iconify-icon icon="mdi:account-box-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">TOUT SUR MOI</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-pad">
+          <div class="text-lg space-y-4">
+            <p>Analyste SIG avec une formation en conservation environnementale et en informatique. Je poursuis actuellement une maîtrise (M.S.) en géoinformatique à CUNY Hunter College, après un baccalauréat (B.Sc.) en informatique de Bishop's University.</p>
+            <p>Plus récemment, j'ai effectué un stage au sein du NYC Department of Transportation, où j'ai développé un système de vision par ordinateur qui signale automatiquement les panneaux de rue endommagés ou vandalisés à partir d'images. Il remplace un processus d'inspection manuelle qui nécessitait auparavant d'envoyer des agents examiner les panneaux un par un. La partie intéressante n'était pas le modèle en lui-même, mais tout ce qui l'entourait : faire dialoguer les images et l'inventaire des panneaux de la ville, constater que les données d'entraînement sous-représentaient certains types de dommages et aller en chercher davantage, et écarter une approche LiDAR plus coûteuse pour que le projet puisse réellement être déployé.</p>
+            <p>Avant cela, mon travail se situait plus près du terrain. J'ai utilisé ArcGIS Field Maps pour cartographier la propagation d'espèces aquatiques envahissantes sur le lac Champlain avec le Vermont Department of Environmental Conservation, réalisé des évaluations de site pour la restauration de bassins versants au Mesa Verde National Park, et passé quatre saisons au sein d'équipes de sentiers et de conservation au Vermont, au Colorado et en Floride.</p>
+            <p>Je suis à l'aise autant sur le terrain, là où naissent les données, qu'au bureau, où elles sont modélisées, analysées et cartographiées pour les décideurs. Quatre saisons de travail sur les sentiers et les bassins versants m'ont appris à lire un paysage à pied avant même d'essayer d'en lire un dans ArcGIS, et m'ont donné un profond respect pour ce que coûte réellement la collecte de bonnes données de terrain.</p>
+          </div>
+          <div class="space-y-6">
+            <div class="frame-rust bg-white p-1">
+              <img src="assets/field-scc-3.jpg" class="w-full h-auto block" alt="Aménagement d'un sentier dans une tremblaie à l'aide d'une pioche">
+            </div>
+            <div class="frame-oxblood bg-white p-1">
+              <img src="assets/field-vycc-1.jpg" class="w-full h-auto block" alt="Retrait de châtaignes d'eau envahissantes sur le lac Champlain avec le Vermont Youth Conservation Corps">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="jank-section bg-white text-black">
+        <div class="section-header mb-6 text-pad">
+          <iconify-icon icon="mdi:email-fast-outline" class="text-4xl text-blue-600"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">CONTACTEZ-MOI DÈS AUJOURD'HUI !</h2>
+        </div>
+        <div class="text-pad">
+          <div class="text-xl space-y-4 bg-jank-peach p-8 frame-gold">
+            <p>E-mail : <a id="email-link" href="mailto:karim.nabahi50@login.cuny.edu" class="classic-link">karim.nabahi50@login.cuny.edu</a></p>
+            <p>LinkedIn : <a id="linkedin-link" href="https://www.linkedin.com/in/karimnabahi/" class="classic-link">https://www.linkedin.com/in/karimnabahi/</a></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="text-center py-8 font-mono text-sm uppercase">
+    &copy; <span id="yr"></span> Karim Nabahi &bull; Conçu avec du HTML/CSS pur &bull; Meilleur affichage avec Netscape Navigator 4.0
+  </footer>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
