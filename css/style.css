@@ -111,8 +111,8 @@ figcaption { color: var(--muted); font-size: .9rem; margin-top: 8px; text-align:
 .scenario-btns button:hover { border-color: var(--green); color: var(--green); }
 .scenario-btns button.active { background: var(--green); border-color: var(--green); color: #fff; }
 .map-wrap { display: grid; grid-template-columns: 1fr 300px; }
-#map { height: 520px; width: 100%; }
-.info-panel { padding: 20px; border-left: 1px solid var(--border); background: #fcfdfb; }
+.map-wrap > div[id^="map"] { height: 520px; width: 100%; }
+.info-panel { padding: 20px; border-left: 1px solid var(--border); background: #fcfdfb; color: var(--ink); }
 .info-panel .sc-label { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
 .info-panel .sc-desc { color: var(--muted); font-size: .92rem; margin-bottom: 16px; }
 .stat { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed var(--border); font-size: .95rem; }

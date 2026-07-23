@@ -25,6 +25,9 @@ body {
 
 h1, h2, h3, h4 {
   font-family: 'National Park', 'Times New Roman', Times, serif;
+  /* Router-carved wood-sign look: a shadow pooling into the bottom-right of
+     the groove, matching the site's established bevel light source. */
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, .55);
 }
 
 .jank-container { max-width: 1200px; margin: 0 auto; border: 4px solid #3b2f26; background: #fff; display: grid; grid-template-columns: 200px 1fr; }

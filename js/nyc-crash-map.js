@@ -1,42 +1,28 @@
-/* NYC VRU crash analysis — client-side Leaflet map, 3-layer toggle.
+/* NYC VRU crash analysis — three independent Leaflet maps, notebook-style
+   (one dedicated map + stats panel per analysis, no shared toggle).
    Reads window.CRASH_BIKE_GAPS, window.CRASH_311_OVERLAP, window.CRASH_ZIP_RISK from nyc-crash-data.js. */
 (function () {
   "use strict";
 
-  var LAYERS = [
-    { key: "bike-gaps", label: "Bike Lane Gaps" },
-    { key: "311-overlap", label: "311 Overlap Zones" },
-    { key: "zip-risk", label: "High-Risk ZIP Codes" }
-  ];
-
   var NUM = function (n, d) { return Number(n).toLocaleString(undefined, { maximumFractionDigits: d || 0 }); };
 
-  var map = L.map("map", { scrollWheelZoom: false }).setView([40.72, -73.95], 11);
-
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: "&copy; OpenStreetMap &copy; CARTO", maxZoom: 19, subdomains: "abcd"
-  }).addTo(map);
-
-  var currentLayer = null;
-
-  function clearLayer() {
-    if (currentLayer) { map.removeLayer(currentLayer); currentLayer = null; }
+  function baseMap(id) {
+    var map = L.map(id, { scrollWheelZoom: false }).setView([40.72, -73.95], 11);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      attribution: "&copy; OpenStreetMap &copy; CARTO", maxZoom: 19, subdomains: "abcd"
+    }).addTo(map);
+    return map;
   }
 
   function stat(k, v) {
     return '<div class="stat"><span class="k">' + k + '</span><span class="v">' + v + '</span></div>';
   }
 
-  function setActive(key) {
-    Array.prototype.forEach.call(document.querySelectorAll(".scenario-btns button"), function (b) {
-      b.classList.toggle("active", b.dataset.s === key);
-    });
-  }
-
-  function showBikeGaps() {
-    clearLayer();
+  // ---- Map 1: Bike Lane Gaps ----
+  (function () {
+    var map = baseMap("map-bike-gaps");
     var feats = window.CRASH_BIKE_GAPS.features;
-    currentLayer = L.geoJSON(window.CRASH_BIKE_GAPS, {
+    var layer = L.geoJSON(window.CRASH_BIKE_GAPS, {
       pointToLayer: function (f, latlng) {
         return L.circleMarker(latlng, { radius: 4, color: "#7a3712", fillColor: "#e08a4f", fillOpacity: 0.7, weight: 1 });
       },
@@ -45,7 +31,7 @@
         layer.bindPopup("<strong>" + p.street + "</strong><br>" + NUM(p.dist_m, 0) + "m from nearest bike lane");
       }
     }).addTo(map);
-    try { map.fitBounds(currentLayer.getBounds().pad(0.1)); } catch (e) {}
+    try { map.fitBounds(layer.getBounds().pad(0.1)); } catch (e) {}
 
     var byStreet = {};
     feats.forEach(function (f) {
@@ -59,23 +45,22 @@
     }).sort(function (a, b) { return b.count - a.count; });
 
     var html = '<div class="sc-label">Bike Lane Gaps</div>' +
-      '<div class="sc-desc">Accidents more than 100m from the nearest bike lane, clustered on 10 streets — candidates for new infrastructure.</div>';
+      '<div class="sc-desc">Accidents more than 100m from the nearest bike lane, by street.</div>';
     rows.forEach(function (r) {
       html += stat(r.street, r.count + " accidents &middot; " + NUM(r.mean, 0) + "m avg gap");
     });
-    html += '<div class="weights">Validated 3 ways: 9/10 streets threshold-stable across 50–150m cutoff variants, 72.5% overlap with NYC DOT Vision Zero priority corridors, moderate traffic-volume confound (Spearman &rho;=0.32) disclosed rather than ignored.</div>';
-    document.getElementById("infoPanel").innerHTML = html;
-    setActive("bike-gaps");
-  }
+    document.getElementById("stats-bike-gaps").innerHTML = html;
+  })();
 
-  function showOverlap() {
-    clearLayer();
+  // ---- Map 2: 311 Overlap Zones ----
+  (function () {
+    var map = baseMap("map-311-overlap");
     var colors = {
       "Bike Accident": "#d64545",
       "Blocked Lane 311 Complaint": "#3d6b66",
       "Overlap (Accident + Complaint)": "#c99a3b"
     };
-    currentLayer = L.geoJSON(window.CRASH_311_OVERLAP, {
+    L.geoJSON(window.CRASH_311_OVERLAP, {
       pointToLayer: function (f, latlng) {
         var isOverlap = f.properties.kind.indexOf("Overlap") === 0;
         return L.circleMarker(latlng, {
@@ -90,35 +75,38 @@
         layer.bindPopup("<strong>" + f.properties.street + "</strong><br>" + f.properties.kind);
       }
     }).addTo(map);
-    try { map.fitBounds(currentLayer.getBounds().pad(0.1)); } catch (e) {}
 
-    var overlapByStreet = {};
+    // Overlap-zone points are grid-cell based and carry a generic "Multiple"
+    // street label in the source data (they can span more than one street),
+    // so "top streets" is computed from the individual accident/complaint
+    // points instead, which do retain their real street names.
+    var byStreet = {};
     window.CRASH_311_OVERLAP.features.forEach(function (f) {
-      if (f.properties.kind.indexOf("Overlap") === 0) {
+      if (f.properties.kind.indexOf("Overlap") !== 0) {
         var s = f.properties.street;
-        overlapByStreet[s] = (overlapByStreet[s] || 0) + 1;
+        byStreet[s] = (byStreet[s] || 0) + 1;
       }
     });
-    var topOverlap = Object.keys(overlapByStreet)
-      .map(function (s) { return { street: s, count: overlapByStreet[s] }; })
+    var topStreets = Object.keys(byStreet)
+      .map(function (s) { return { street: s, count: byStreet[s] }; })
       .sort(function (a, b) { return b.count - a.count; })
       .slice(0, 8);
 
     var html = '<div class="sc-label">311 Overlap Zones</div>' +
-      '<div class="sc-desc">Where "Blocked Bike Lane" 311 complaints and bike accidents cluster in the same location — illegal parking as a direct safety hazard.</div>' +
+      '<div class="sc-desc">Where "Blocked Bike Lane" complaints and accidents cluster together.</div>' +
       stat("Correlation (accidents vs. complaints)", "r = 0.43") +
-      '<div class="weights">Top overlap streets:</div>';
-    topOverlap.forEach(function (r) {
-      html += stat(r.street, r.count + " overlap points");
+      '<div class="weights">Top streets by combined accident + complaint activity:</div>';
+    topStreets.forEach(function (r) {
+      html += stat(r.street, r.count + " points");
     });
-    document.getElementById("infoPanel").innerHTML = html;
-    setActive("311-overlap");
-  }
+    document.getElementById("stats-311-overlap").innerHTML = html;
+  })();
 
-  function showZipRisk() {
-    clearLayer();
+  // ---- Map 3: High-Risk ZIP Codes ----
+  (function () {
+    var map = baseMap("map-zip-risk");
     var fillColors = { "robust-high": "#b5541f", "borderline": "#c99a3b", "normal": "#e2ded1" };
-    currentLayer = L.geoJSON(window.CRASH_ZIP_RISK, {
+    L.geoJSON(window.CRASH_ZIP_RISK, {
       style: function (f) {
         var cat = f.properties.risk_category;
         return {
@@ -137,7 +125,6 @@
         );
       }
     }).addTo(map);
-    map.setView([40.72, -73.95], 11);
 
     var robust = [], borderline = [];
     window.CRASH_ZIP_RISK.features.forEach(function (f) {
@@ -154,21 +141,6 @@
     robust.forEach(function (p) { html += stat(p.zipcode, NUM(p.accident_count, 0) + " accidents"); });
     html += '<div class="weights">Borderline (flagged at the original cutoff, but not stable across nearby thresholds):</div>';
     borderline.forEach(function (p) { html += stat(p.zipcode, NUM(p.accident_count, 0) + " accidents"); });
-    html += '<div class="weights">A sensitivity check across nearby percentile cutoffs found only the 5 robust codes hold up consistently — the 5 borderline codes are a lower-confidence watch list, not equally actionable.</div>';
-    document.getElementById("infoPanel").innerHTML = html;
-    setActive("zip-risk");
-  }
-
-  var SHOWERS = { "bike-gaps": showBikeGaps, "311-overlap": showOverlap, "zip-risk": showZipRisk };
-
-  var wrap = document.getElementById("scenarioBtns");
-  LAYERS.forEach(function (l) {
-    var b = document.createElement("button");
-    b.textContent = l.label;
-    b.dataset.s = l.key;
-    b.onclick = function () { SHOWERS[l.key](); };
-    wrap.appendChild(b);
-  });
-
-  showBikeGaps();
+    document.getElementById("stats-zip-risk").innerHTML = html;
+  })();
 })();
