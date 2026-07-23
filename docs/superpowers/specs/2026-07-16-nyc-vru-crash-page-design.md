@@ -1,5 +1,13 @@
 # NYC Vulnerable Road User Crash Analysis — Portfolio Page Design
 
+> **Revised 2026-07-23** to fold in the three council validation gates closed
+> 2026-07-17 for the Section 3.1.7 top-10 recommendation (threshold
+> sensitivity, Vision Zero cross-check, confounding check) and the Section 7
+> recommendation copy revised since this spec was first written. See
+> "Validating the Recommendation" (new Page Structure item 6) and the updated Open
+> Dependencies / Deferred Decisions below. Everything else from the original
+> 2026-07-16 spec still holds.
+
 ## Purpose
 
 Add a second project page to the portfolio site, showcasing the NYC VRU
@@ -40,13 +48,37 @@ Tailwind + custom CSS from `../css/style.css`):
    used per layer. A flowchart-equivalent diagram image is optional/deferred
    (see Deferred Decisions) — the section works with text alone for v1.
 5. **WHAT THE RESULTS SHOW** — narrative tying the three layers together,
-   plus the concrete recommendations already written into the notebook's
-   Section 7.1 (bike lane gap closure, ZIP-code targeting led by the robust
-   5, 311 enforcement).
-6. **Methodology / Grounding** — links out to the full notebook. Requires
-   `MV_Collision_Portfolio` to have a GitHub remote and be pushed (see Open
-   Dependencies) since there is no PDF paper for this project, unlike
-   Adirondack's.
+   plus the concrete recommendations pulled fresh from the notebook's current
+   Section 7.1 at implementation time (bike lane gap closure, ZIP-code
+   targeting led by the robust 5, 311 enforcement). That copy has been
+   revised since this spec was first written (post-FDR-correction) — do not
+   reuse any Section 7.1 wording quoted in this spec's earlier draft, pull
+   live from the notebook.
+6. **Validating the Recommendation** *(new)* — a dedicated section between
+   "What the Results Show" and "Methodology/Grounding," giving the three
+   2026-07-17 council validation gates their own visible spot rather than
+   burying them in an info panel. Three boxes, each visually distinct
+   (following the SDSS page's per-topic colored-section pattern):
+   - **Threshold Sensitivity** — headline stat: 9 of 10 streets robust across
+     50m/150m cutoff variants (vs. the recommendation's native ~100m cutoff);
+     takeaway: only Linden Boulevard is threshold-sensitive.
+   - **Vision Zero Cross-Check** — headline stat: 72.5% of the top-10
+     streets' off-network accidents sit on a DOT-designated Vision Zero
+     Priority Corridor; takeaway: independent external corroboration from
+     NYC DOT's own dataset.
+   - **Confounding Check** — headline stat: Spearman ρ=0.298 (p<0.0001)
+     between off-network accident counts and mean traffic volume; takeaway:
+     a real but modest confound, disclosed alongside its partial coverage
+     caveat (~16% street-name match rate).
+
+   Explicitly out of scope for this section: the Section 4 LISA/FDR null
+   finding (see Deferred Decisions) — it concerns a different analysis
+   object (500 traffic-volume-monitored segments) than the Section 3.1.7
+   street recommendation these three gates validate, and including it here
+   would wrongly imply the two are about the same finding.
+7. **Methodology / Grounding** — links out to the full notebook via GitHub
+   (see Open Dependencies) since there is no PDF paper for this project,
+   unlike Adirondack's.
 
 ## Interactive Explorer
 
@@ -86,18 +118,30 @@ purely additive, since the ADK page's map must keep working unchanged.
 
 ## Open Dependencies
 
-- `MV_Collision_Portfolio` (the analysis repo) currently has no git remote.
-  It needs to be pushed to GitHub before the Methodology section's "view
-  full analysis" link can point anywhere real. This is a prerequisite for
-  finishing the page, not part of building the page itself.
+- `MV_Collision_Portfolio` (the analysis repo) currently has no git remote
+  (confirmed still true as of 2026-07-23; `data/` is already gitignored, so
+  pushing will not expose the large source CSVs — only the notebook,
+  CHANGELOG, and research-notes). **Decision (2026-07-23): push it to a new
+  public GitHub repo** so the Methodology section's "view full analysis"
+  link has somewhere real to point, matching the resolution the user chose
+  for this open item. Exact repo name/visibility to be confirmed with the
+  user immediately before the push itself, since creating and pushing to a
+  new public repo is a one-way, publicly-visible action taken separately
+  from writing this spec.
 
 ## Deferred Decisions (explicitly deferred by the user, not gaps in this spec)
 
-- **How to frame the null LISA/FDR finding on the page.** The design above
-  does not feature it — it stays in the notebook/CHANGELOG for now. The
-  user asked to revisit this later rather than decide now.
+- **The null LISA/FDR finding (Section 4: 22 of 500 traffic-volume-monitored
+  segments flagged as raw-significant hotspots, 0 survived Benjamini-Hochberg
+  correction) stays deferred as of 2026-07-23**, reaffirmed after the user
+  asked for the distinction to be spelled out: it's a different analysis
+  object (500 risk-scored segments) than the Section 3.1.7 street
+  recommendation the new "Validating the Recommendation" section covers.
+  Section 4.10's related Vision Zero cross-check on those same 22 hotspots
+  (no enrichment found, consistent with the FDR retraction) is likewise left
+  out of the page — it stays in the notebook/CHANGELOG only.
 - **Whether to build a flowchart-equivalent diagram** for the How It Works
-  section. Deferred as optional/non-blocking for a first version.
+  section. Still deferred as optional/non-blocking for a first version.
 
 ## Out of Scope for This Design
 
