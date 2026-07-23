@@ -11,7 +11,7 @@
   <script src="../js/tailwind-config.js"></script>
   <link rel="stylesheet" href="../css/jank.css">
   <style>
-    .meta-stat { border: 2px solid #fff; padding: 10px 16px; }
+    .meta-stat { border-width: 2px; border-style: solid; border-color: #fff #4a4a4a #4a4a4a #fff; padding: 10px 16px; }
     .meta-stat .k { font-size: .7rem; text-transform: uppercase; letter-spacing: 1px; opacity: .7; }
     .meta-stat .v { font-weight: bold; }
     /* explorer keeps its own look from ../css/style.css so the map/JS integration is untouched */
@@ -21,7 +21,7 @@
 <body>
   <div class="jank-container">
     <header class="top-bar">
-      <iconify-icon icon="mdi:compass-outline" class="text-5xl text-jank-yellow"></iconify-icon>
+      <span class="icon-badge icon-badge-lg icon-badge-oxblood"><iconify-icon icon="mdi:compass-outline" class="text-3xl text-jank-yellow"></iconify-icon></span>
       <h1>KARIM NABAHI</h1>
       <nav class="lang-toggle"><span class="lang-current">EN</span> | <a href="adk-sdss-fr.html">FR</a></nav>
     </header>
@@ -33,7 +33,7 @@
         <a href="../index.html#contact">CONTACT</a>
       </nav>
       <div class="mt-10">
-        <iconify-icon icon="mdi:map-outline" class="text-4xl text-white/50"></iconify-icon>
+        <span class="icon-badge icon-badge-sm icon-badge-dark"><iconify-icon icon="mdi:map-outline" class="text-2xl text-white/50"></iconify-icon></span>
         <p class="text-xs mt-2 font-mono">A REAL PROJECT!</p>
       </div>
     </aside>
