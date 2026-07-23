@@ -63,7 +63,7 @@
     rows.forEach(function (r) {
       html += stat(r.street, r.count + " accidents &middot; " + NUM(r.mean, 0) + "m avg gap");
     });
-    html += '<div class="weights">Validated 3 ways: 9/10 streets threshold-stable across 50–50m cutoff variants, 72.5% overlap with NYC DOT Vision Zero priority corridors, moderate traffic-volume confound (Spearman &rho;=0.32) disclosed rather than ignored.</div>';
+    html += '<div class="weights">Validated 3 ways: 9/10 streets threshold-stable across 50–150m cutoff variants, 72.5% overlap with NYC DOT Vision Zero priority corridors, moderate traffic-volume confound (Spearman &rho;=0.32) disclosed rather than ignored.</div>';
     document.getElementById("infoPanel").innerHTML = html;
     setActive("bike-gaps");
   }
