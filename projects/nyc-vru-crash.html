@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NYC Vulnerable Road User Crash Analysis — Karim Nabahi</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="../js/tailwind-config.js"></script>
+  <link rel="stylesheet" href="../css/jank.css">
+  <style>
+    .meta-stat { border-width: 2px; border-style: solid; border-color: #fff #4a4a4a #4a4a4a #fff; padding: 10px 16px; }
+    .meta-stat .k { font-size: .7rem; text-transform: uppercase; letter-spacing: 1px; opacity: .7; }
+    .meta-stat .v { font-weight: bold; }
+    .explorer { border: 8px solid #b5541f !important; border-radius: 0 !important; }
+    .validation-box { border-width: 4px; border-style: solid; padding: 20px; }
+  </style>
+</head>
+<body>
+  <div class="jank-container">
+    <header class="top-bar">
+      <span class="icon-badge icon-badge-lg icon-badge-oxblood"><iconify-icon icon="mdi:compass-outline" class="text-3xl text-jank-yellow"></iconify-icon></span>
+      <h1>KARIM NABAHI</h1>
+    </header>
+    <aside class="sidebar">
+      <nav class="flex flex-col">
+        <a href="../index.html#projects">PROJECTS</a>
+        <a href="../index.html#about">ABOUT ME</a>
+        <a href="../resume.html">MY RESUME</a>
+        <a href="../index.html#contact">CONTACT</a>
+      </nav>
+      <div class="mt-10">
+        <span class="icon-badge icon-badge-sm icon-badge-dark"><iconify-icon icon="mdi:bike" class="text-2xl text-white/50"></iconify-icon></span>
+        <p class="text-xs mt-2 font-mono">A REAL PROJECT!</p>
+      </div>
+    </aside>
+    <main class="bg-white">
+
+      <section class="jank-section bg-[#1c2321] text-white">
+        <div class="text-pad">
+        <span class="uppercase text-xs tracking-widest text-jank-yellow font-bold">Crash Data Analysis &amp; Spatial Statistics</span>
+        <h2 class="font-bold text-5xl my-4">NYC VULNERABLE ROAD USER CRASH ANALYSIS</h2>
+        <p class="text-xl leading-relaxed max-w-3xl">NYC has multiple independent signals about where cyclist and pedestrian risk concentrates — infrastructure gaps, resident complaints, demographic exposure — collected by different city agencies and never cross-referenced. This project puts all three on one map, then stress-tests the resulting recommendations before trusting them.</p>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <div class="meta-stat"><div class="k">Role</div><div class="v">Analysis &amp; visualization</div></div>
+          <div class="meta-stat"><div class="k">Tools</div><div class="v">Python, GeoPandas, Leaflet</div></div>
+          <div class="meta-stat"><div class="k">Method</div><div class="v">Spatial joins, hypothesis testing</div></div>
+          <div class="meta-stat"><div class="k">Course</div><div class="v">GTECH 731, Hunter College</div></div>
+        </div>
+        </div>
+      </section>
+
+      <section class="jank-section bg-[#3b2f26] text-white">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:map-marker-question-outline" class="text-4xl text-orange-400"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">THE PROBLEM</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-10">Bike-lane gap streets, blocked-lane 311 complaints, and demographic risk are three separate signals collected by three different parts of city government — none of them cross-referenced against the others. Each one alone is suggestive; put on the same map, they either corroborate or contradict each other, which is exactly what a decision-maker needs before acting on any one of them.</p>
+        </div>
+
+        <!-- INTERACTIVE MAP (kept structurally identical for js/nyc-crash-map.js) -->
+        <div class="explorer">
+          <div class="toolbar">
+            <h3>Explore the crash risk layers</h3>
+            <p>Pick a layer to see accident clusters, complaint overlaps, and demographic risk across NYC.</p>
+          </div>
+          <div class="scenario-btns" id="scenarioBtns"></div>
+          <div class="map-wrap">
+            <div id="map"></div>
+            <aside class="info-panel" id="infoPanel"></aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="jank-section bg-[#7c8b5e] text-white">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:cog-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">HOW IT WORKS</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-4">Each layer is its own small pipeline. <strong>Bike Lane Gaps:</strong> every cyclist-involved crash (2016&ndash;2025) is spatially joined to the nearest bike lane in projected meters (EPSG:32618); accidents over 100m away are grouped by street to find the top 10 off-network candidates for new infrastructure. <strong>311 Overlap:</strong> "Blocked Bike Lane" 311 complaints and bike accidents are each snapped to a ~110m grid cell; cells containing both are flagged as overlap zones. <strong>ZIP Risk:</strong> accident counts per ZIP code are compared against population, flagging codes in the bottom 40th population percentile but top 65th accident percentile — then re-checked at two nearby percentile cutoffs to separate the robust signal from threshold noise.</p>
+        <p class="text-lg leading-relaxed max-w-3xl mb-8">All three pipelines run on the same underlying 10-year NYC crash dataset (2016&ndash;2025), cross-referenced against NYC Open Data's bike route network, 311 service requests, ZIP-code population figures, and NYC DOT's Vision Zero priority corridors.</p>
+
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:chart-box-outline" class="text-4xl text-jank-yellow"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">WHAT THE RESULTS SHOW</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-4">A clear "one block over" effect shows up in the bike lane data: accidents cluster 50&ndash;120m from existing lanes rather than right on top of them, often on a one-way street missing a lane on its opposite-direction neighbor. The 10 streets with the most off-network accidents — led by Broadway, Fulton Street, and 3rd Avenue — are the strongest candidates for closing that gap.</p>
+        <p class="text-lg leading-relaxed max-w-3xl">Community-reported infrastructure failures back this up: streets with more "Blocked Bike Lane" 311 complaints also see more accidents (r = 0.43), pointing at illegal parking as a direct, fixable hazard. And of the 10 ZIP codes originally flagged as disproportionately high-risk relative to their population, a sensitivity check found only 5 hold up across nearby threshold choices — <strong>10001, 10012, 10013, 10017, and 11232</strong> — so outreach and infrastructure review should prioritize those 5 first, treating the other 5 as a lower-confidence watch list rather than an equally-actionable list.</p>
+        </div>
+      </section>
+
+      <section class="jank-section bg-[#f2ead9] text-black">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:shield-check-outline" class="text-4xl text-blue-600"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">VALIDATING THE RECOMMENDATION</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-8">Before treating the top-10 off-network street list as more than a raw tally, it was checked three independent ways.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="validation-box frame-gold bg-white">
+            <span class="uppercase text-xs tracking-widest font-bold text-[#8f6b1f]">Threshold Sensitivity</span>
+            <div class="text-3xl font-bold my-2">9 of 10 streets</div>
+            <p class="text-sm">Robust across 50m and 150m cutoff variants of the original 100m threshold. Only Linden Boulevard is threshold-sensitive — it drops out at 50m, replaced by Myrtle Avenue.</p>
+          </div>
+          <div class="validation-box frame-teal bg-white">
+            <span class="uppercase text-xs tracking-widest font-bold text-[#223d39]">Vision Zero Cross-Check</span>
+            <div class="text-3xl font-bold my-2">72.5%</div>
+            <p class="text-sm">of the top-10 streets' off-network accidents sit on a DOT-designated Vision Zero Priority Corridor — independent external corroboration from NYC DOT's own dataset, ranging from 100% on Nostrand/Bushwick Avenues down to 53% on Broadway.</p>
+          </div>
+          <div class="validation-box frame-oxblood bg-white">
+            <span class="uppercase text-xs tracking-widest font-bold text-[#3f211a]">Confounding Check</span>
+            <div class="text-3xl font-bold my-2">&rho; = 0.32</div>
+            <p class="text-sm">Spearman correlation (p &lt; 0.0001, 406 of 2,388 streets matched to a monitored traffic location) between off-network accident counts and mean traffic volume — a real but moderate confound, disclosed rather than hidden, alongside its partial (17%) match-rate coverage.</p>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <section class="jank-section bg-white text-black">
+        <div class="text-pad">
+        <div class="section-header mb-8">
+          <iconify-icon icon="mdi:book-open-page-variant-outline" class="text-4xl text-blue-600"></iconify-icon>
+          <h2 class="font-bold text-4xl tracking-widest">METHODOLOGY / GROUNDING</h2>
+        </div>
+        <p class="text-lg leading-relaxed max-w-3xl mb-8">This page summarizes findings from a 45-cell analysis notebook covering 10 years of NYC crash data (2016&ndash;2025), weather correlation, bike-lane proximity, traffic-volume-normalized risk scoring with spatial-autocorrelation testing, 311 complaint cross-referencing, and ZIP-code demographic risk — including an honestly-disclosed negative result (a Local Moran's I hotspot finding that did not survive multiple-comparisons correction). There's no standalone paper for this one, unlike the Adirondack project — the full notebook is the primary source.</p>
+        <div class="yellow-callout">
+          <a href="https://github.com/knabahi/mv-collision-nyc-vru-analysis" target="_blank" rel="noopener" class="classic-link font-bold text-lg">CLICK HERE TO VIEW THE FULL NOTEBOOK ON GITHUB!</a>
+        </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <footer class="text-center py-8 font-mono text-sm uppercase">
+    <a href="../index.html" class="classic-link">&larr; Back to projects</a> &bull;
+    &copy; <span id="yr"></span> Karim Nabahi &bull; Best viewed in Netscape Navigator 4.0
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/nyc-crash-data.js"></script>
+  <script src="../js/nyc-crash-map.js"></script>
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
